@@ -27,7 +27,7 @@ touch hello.rb
 
 Add an instruction to the file:
 ``` ruby
-// hello.rb
+# hello.rb
 puts "Hello World"
 ```
 
