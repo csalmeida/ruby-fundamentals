@@ -27,7 +27,7 @@ touch hello.rb
 
 Add an instruction to the file:
 ``` ruby
-# hello.rb
+// hello.rb
 puts "Hello World"
 ```
 
@@ -37,3 +37,18 @@ ruby hello.rb
 ```
 
 Again, `Hello, World` will print to the terminal.
+
+Whilst learning or experimenting with features, it is useful to run commands. This can be done using the Interactive Ruby Shell (IRB):
+
+```
+irb
+irb(main)::001:0> 1 + 1
+=> 2
+irb(main)::002:0> puts 2077
+2077
+=> nil
+```
+
+In the console above, `irb` was ran. Subsequently, an addition operation was made where the result was returned. 
+
+The next command prints `2077` into the terminal but `nil` is also printed. This is because in Ruby most instructions return a value and `irb` makes that aspect visible.
