@@ -6,9 +6,9 @@ Contains initial experiments and files to do with the learning process of the [R
 
 ## Table of Contents
 
-- [Getting Started](getting-started)
-- [The Interactive Ruby Shell](the-interactive-ruby-shell)
-- [Accessing Documentation](accessing-documentation)
+- [Getting Started](#getting-started)
+- [The Interactive Ruby Shell](#the-interactive-ruby-shell)
+- [Accessing Documentation](#accessing-documentation)
 - [Objects](#objects)
 - [Variables](#variables)
 
