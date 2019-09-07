@@ -48,3 +48,12 @@ puts "x is equal to: #{x}"
 
 # Shows the type of class this variable holds.
 puts "x is an object of type #{x.class}"
+
+## Floats
+2.6 + 2.6
+
+# If both were Integers they wouldn't be divided correctly:
+y = 10.0 / 3
+puts "y is equal to: #{y}"
+puts "y is an object of type #{y.class}"
+
