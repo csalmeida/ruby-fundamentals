@@ -12,6 +12,7 @@ Contains initial experiments and files to do with the learning process of the [R
 - [Objects](#objects)
 - [Variables](#variables)
 - [Numbers](#numbers)
+- [Strings](#strings)
 
 ## Getting Started
 
@@ -241,5 +242,111 @@ To have the correct value return both at least one of them would require to be a
 10 / 3.0
 ```
 
- 
+## Strings
 
+Strings are a common feature in most programming languages and they represent a sequence of characters and are used to represent pieces of text.
+
+A string is represented by wrapping it in single or double quotes. There are differences between the two which might help decide when to choose one over the other.
+
+``` ruby
+"Hello, world"
+'Hello, world'
+```
+
+### Concatenation
+
+One common operation that is performed on `String`s is concatenation. It combines them into a single piece by adding them together.
+
+In the example below the words _hello_ and _world_ and contatenated. Notice how the comma and the space is also concatenated in the middle to show it correctly, otherwise it would represent _helloworld_ with no spacing:
+
+``` ruby
+"Hello" + ", " + "world" # hello, world
+```
+
+Strings can also be assigned to variables like any other object:
+
+``` ruby
+# strings.rb
+greeting = "Hello"
+target = "world"
+sentence = greeting + ", " + target
+puts sentence # hello, world
+```
+
+Another way to join strings together is by using the `append` operator. It looks like the _less than, less than_ sign and suggests that one string is being shoved into the other:
+
+``` ruby
+# string.rb
+greeting = "Hello"
+greeting << ", "
+greeting << "nature"
+```
+
+Strings also can be repeated by using the multiplication (`*`) operator and methods can be ran on a string:
+
+``` ruby
+# strings.rb
+"ruby " * 4 # Ohhuuohhhuhhohhh
+```
+
+There are also many other methods that can be used with strings, consult `ri` to know which ones.
+
+``` ruby
+# strings.rb
+puts "ruby".capitalize
+puts "ruby".upcase.reverse
+```
+
+### Escaping and Interpolation
+
+Besides the details mentioned above there are some details worth mentioned in strings, starting with string escaping.
+
+In the example below, there is a first string delimited by double quotes with _Let's escape_ inside. There is a single quote in this string and it is valid Ruby.
+
+Now looking at the second string, wrapped with single quotes, which introduces a problem. As Ruby established single quotes to be the delimiter of this string, it will mark its end when it finds its pair. So the string ends up being _Let_ instead of the intended _Let's escape_.
+
+``` ruby
+"Let's escape!"
+'Let's escape!'
+```
+
+Similarly the same issue would occur with double quotes:
+
+``` ruby 
+'They said "hi" back'
+"They said "hi" back"
+```
+
+To keep this issue from happening characters can pe escaped. This means that `"` or `'` can be used inside a string even in these cases, making it valid Ruby:
+
+``` ruby 
+# strings.rb
+'Let\'s escape!' # Let's escape!
+"They said \"hi\" back" # They said "hi" back
+```
+
+The `\` escape character can also be used as special control characters such as a tab and a new line. These only work on `"` strings as `'` will print the backslash as well, one of the differences between the two.
+
+``` ruby
+"\tLet\'s escape!\n Go!" #    Let's escape!
+                         # Go!
+```
+
+Additionally, interpolation can be used on strings. This means that something else can be inserted into the string, this could be a number, other objects or most commonly, a variable.
+
+Same as the example above, interpolation only works on `"` strings:
+
+``` ruby
+# strings.rb
+greeting = "Hello"
+target = "world"
+sentence = "#{greeting}, #{target}"
+puts sentence # hello, world
+```
+
+Methods and math operations can be ran inside the interpolation brackets:
+
+``` ruby
+sentence = "#{greeting}, #{target.upcase}" # hello, WORLD
+puts "2 + 2 = #{2 + 2}" # 2 + 2 = 4 
+```
