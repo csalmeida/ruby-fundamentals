@@ -11,6 +11,7 @@ Contains initial experiments and files to do with the learning process of the [R
 - [Accessing Documentation](#accessing-documentation)
 - [Objects](#objects)
 - [Variables](#variables)
+- [Numbers](#numbers)
 
 ## Getting Started
 
@@ -198,4 +199,47 @@ x **= 2
 x %= 2
 ```
 
+Integers and Floats have multiple methods that can be applied to them, for instance:
+
+``` ruby
+100.next # 101
+2.6.round # 3
+```
+
+Consult `ri` or the documentation for more methods on `Floats` and `Integer` objects.
+
+##### Notes on Floats
+
+Floats are similar to Integers but with a few differences, specifically the way Ruby treats them in operations.
+
+When adding two `Integer`s, the same type will be returned:
+``` ruby
+2 + 2 # 4, Integer
+```
+
+Similarly, the same happens with `Float`s:
+``` ruby
+2.6 + 2.6 # 5.2, Float 
+```
+
+However, if a `Float` is present in an operation with and `Integer` the type will convert, as Ruby assumes precision is required:
+
+``` ruby
+5 + 2.6 # 7.6, Float
+```
+
+This rule can lead to confusion in operations that use division. As two integers were provided in the example below, Ruby kept its type the same:
+``` ruby
+10 / 3 # 3, Integer
+```
+
+To have the correct value return both at least one of them would require to be a `Float`:
+
+``` ruby
+10.0 / 3 # 3.3333333333333335, Float
+# OR
+10 / 3.0
+```
+
+ 
 
