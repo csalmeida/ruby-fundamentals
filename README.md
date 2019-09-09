@@ -16,6 +16,7 @@ Contains initial experiments and files to do with the learning process of the [R
 - [Arrays](#arrays)
 - [Hashes](#hashes)
 - [Symbols](#symbols)
+- [Booleans](#booleans)
 
 ## Getting Started
 
@@ -523,3 +524,57 @@ another_person = {
 
 another_person[:last_name]
 ```
+
+## Booleans
+
+An object that is either `true` or `false`. Its mostly used for comparisons and logical expressions that define whether a piece of code runs.
+
+Booleans can either be defined with the keywords `true` or `false`, or even with `1` or `0`, the former evaluating to true and the latter to false.
+
+```ruby
+# booleans.rb
+x = true
+y = false
+```
+
+To define conditions, comparison and logic operators:
+
+|       |        |
+| ------------- |:-------------:|
+| Equal    | **==** |
+| Less than | **<** |
+| Greater than | **>** |
+| Less than or equal to | **<=** |
+| Greater than or equal to | **>=** |
+| Not | **!** |
+| Not equal | **!=** |
+| And | **&&** |
+| Or | **||** |
+
+Most of the time, booleans will be received as return values from a condition:
+
+```ruby
+# booleans.rb
+z = 20
+
+z == 77           # false
+z < 77            # true
+z > 77            # false
+z >= 77           # true
+z >= 77           # false
+!z                # false
+z != 77           # true
+z < 77 && z > 3   # true
+z < 77 || z > 10  # true
+```
+
+Additionally, booleans can be returned from methods that use the `?` sign:
+
+```ruby
+# booleans.rb
+z = 20
+w = []
+
+z.nil? 
+z.between?(1, 5)
+w.empty?
