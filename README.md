@@ -13,6 +13,8 @@ Contains initial experiments and files to do with the learning process of the [R
 - [Variables](#variables)
 - [Numbers](#numbers)
 - [Strings](#strings)
+- [Arrays](#arrays)
+- [Hashes](#hashes)
 - [Symbols](#symbols)
 
 ## Getting Started
@@ -350,6 +352,144 @@ Methods and math operations can be ran inside the interpolation brackets:
 ``` ruby
 sentence = "#{greeting}, #{target.upcase}" # hello, WORLD
 puts "2 + 2 = #{2 + 2}" # 2 + 2 = 4 
+```
+
+## Arrays
+
+Ruby also supports arrays, an ordered, integer-index collection of objects.
+
+Objects are put into an ordered list and can be refered to by the position that they hold.
+
+The position count starts at `0` (0 indexed), common on most programming languages. This means that the first item of an array is accessed by refering `0` as its index, not `1`.
+
+In the example below an empty array is declared. A second one is also declared with both strings and an integer inside:
+
+``` ruby
+# arrays.rb
+empty_array = []
+an_array = ['a', 'b', 'V', 2077]
+```
+
+To access these values the position must be referenced, positions that don't have a value return `nil`:
+
+``` ruby
+# arrays.rb
+an_array[0] # a
+an_array[3] # 2077
+an_array[4] # nil
+```
+
+Values can also be assigned to array positions, _a_ will be replaced with _Bug_:
+
+``` ruby
+# arrays.rb
+an_array[0] = "Bug"
+```
+
+A new item can be added at the end of the array by using the `append` operator:
+
+``` ruby
+# arrays.rb
+an_array << "Dex"
+puts an_array[4] # Dex
+```
+
+Arrays can next other arrays and can be accessed starting from the end of the array by using negative values:
+
+``` ruby
+# arrays.rb
+a_second_array = ["Omboa", "Kalunga", "Kimbo", ["Ocuria", "Onjo"]]
+
+ruby_array = ["g","o","r","u","b","y"]
+ruby_array[2] # "r"
+ruby_array[-1] # "y"
+```
+
+Additionally, two positions or a range can be passed to return only a set of values:
+
+``` ruby
+# arrays.rb
+ruby_array[2,4] # ["r","u","b","y"]
+ruby_array[-2,2] # ["b","y"]
+ruby_array[2..3] # ["r","u"]
+ruby_array[-4..-1] # ["r","u","b","y"]
+```
+
+### Array Methods
+
+Arrays are used very frequently in Ruby programs and there are useful methods that can be used to make it easier to work with them.
+
+```ruby
+# arrays.rb
+mixed_array = [2,4,['a', 'b'], nil, 4, 'c']
+mixed_array.length # 6
+mixed_array.size # 6
+mixed_array.reverse # ["c", 4, nil, ["a", "b"], 4, 2]
+mixed_array.shuffle # [["a", "b"], 4, nil, 2, 4, "c"]
+```
+
+The methods above return a new value but don't affect the array stored in `mixed_array`. To make the change permanent a `!` can be added at the end of the method declaration:
+
+``` ruby
+# arrays.rb
+mixed_array.uniq! # [2, 4, ["a", "b"], nil, "c"]
+mixed_array.compact! # [2, 4, ["a", "b"], "c"]
+mixed_array.flatten! # [2, 4, "a", "b", "c"]
+```
+
+The '?' is another Ruby idiom that can be also used in methods to query or find out about and in most cases it return a [`boolean`](#booleans) value:
+
+``` ruby
+# arrays.rb
+mixed_array.include?(2) # true
+```
+
+There are other common methods that are used to manipulate arrays. Some methods take parameters in order to return a new array or another output:
+
+```ruby
+mixed_array
+mixed_array.delete_at(1) # [2, "a", "b", "c"]
+mixed_array.delete('c') # [2, "a", "b"]
+
+[1,2,3,4,5].join(',') # "1,2,3,4,5"
+"1,2,3,4,5".split(',') # [1,2,3,4,5]
+```
+
+Please refer to `ri` for more information on arrays.
+
+## Hashes
+
+Hashes are a collection just like an array. However, they are _unordered_ and object-indexed (or key-value pairs).
+
+This object type is useful when the order of a list does not matter so much and the convenience of accessing items by a label is required. Each label (`key`) needs to be unique.
+
+Hashes are also known as dictionaries or associative arrays in other programming languages.
+
+An example of declaring a hash, how to access the value and reset a value:
+
+``` ruby
+# hashes.rb
+car = {
+  'brand' => 'Tesla',
+  'model' => 'X',
+  'color' => 'blue',
+  'interior_color' => 'tan',
+  'extras' => true
+}
+
+puts car['model']
+
+car['color'] = "red"
+car['doors'] = 2
+```
+
+Hashes have also useful methods that can be used to manipulate them. Refer to `ri` for details:
+
+``` ruby
+# hashes.rb
+puts car.keys # Shows available keys of a hash.
+puts car.values # Shows all values in a hash.
+puts car.to_a # Turns a hash into an array.
 ```
 
 ## Symbols
