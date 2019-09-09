@@ -13,6 +13,10 @@ Contains initial experiments and files to do with the learning process of the [R
 - [Variables](#variables)
 - [Numbers](#numbers)
 - [Strings](#strings)
+- [Arrays](#arrays)
+- [Hashes](#hashes)
+- [Symbols](#symbols)
+- [Booleans](#booleans)
 - [Ranges](#ranges)
 
 ## Getting Started
@@ -351,6 +355,230 @@ Methods and math operations can be ran inside the interpolation brackets:
 sentence = "#{greeting}, #{target.upcase}" # hello, WORLD
 puts "2 + 2 = #{2 + 2}" # 2 + 2 = 4 
 ```
+
+## Arrays
+
+Ruby also supports arrays, an ordered, integer-index collection of objects.
+
+Objects are put into an ordered list and can be refered to by the position that they hold.
+
+The position count starts at `0` (0 indexed), common on most programming languages. This means that the first item of an array is accessed by refering `0` as its index, not `1`.
+
+In the example below an empty array is declared. A second one is also declared with both strings and an integer inside:
+
+``` ruby
+# arrays.rb
+empty_array = []
+an_array = ['a', 'b', 'V', 2077]
+```
+
+To access these values the position must be referenced, positions that don't have a value return `nil`:
+
+``` ruby
+# arrays.rb
+an_array[0] # a
+an_array[3] # 2077
+an_array[4] # nil
+```
+
+Values can also be assigned to array positions, _a_ will be replaced with _Bug_:
+
+``` ruby
+# arrays.rb
+an_array[0] = "Bug"
+```
+
+A new item can be added at the end of the array by using the `append` operator:
+
+``` ruby
+# arrays.rb
+an_array << "Dex"
+puts an_array[4] # Dex
+```
+
+Arrays can next other arrays and can be accessed starting from the end of the array by using negative values:
+
+``` ruby
+# arrays.rb
+a_second_array = ["Omboa", "Kalunga", "Kimbo", ["Ocuria", "Onjo"]]
+
+ruby_array = ["g","o","r","u","b","y"]
+ruby_array[2] # "r"
+ruby_array[-1] # "y"
+```
+
+Additionally, two positions or a range can be passed to return only a set of values:
+
+``` ruby
+# arrays.rb
+ruby_array[2,4] # ["r","u","b","y"]
+ruby_array[-2,2] # ["b","y"]
+ruby_array[2..3] # ["r","u"]
+ruby_array[-4..-1] # ["r","u","b","y"]
+```
+
+### Array Methods
+
+Arrays are used very frequently in Ruby programs and there are useful methods that can be used to make it easier to work with them.
+
+```ruby
+# arrays.rb
+mixed_array = [2,4,['a', 'b'], nil, 4, 'c']
+mixed_array.length # 6
+mixed_array.size # 6
+mixed_array.reverse # ["c", 4, nil, ["a", "b"], 4, 2]
+mixed_array.shuffle # [["a", "b"], 4, nil, 2, 4, "c"]
+```
+
+The methods above return a new value but don't affect the array stored in `mixed_array`. To make the change permanent a `!` can be added at the end of the method declaration:
+
+``` ruby
+# arrays.rb
+mixed_array.uniq! # [2, 4, ["a", "b"], nil, "c"]
+mixed_array.compact! # [2, 4, ["a", "b"], "c"]
+mixed_array.flatten! # [2, 4, "a", "b", "c"]
+```
+
+The '?' is another Ruby idiom that can be also used in methods to query or find out about and in most cases it return a [`boolean`](#booleans) value:
+
+``` ruby
+# arrays.rb
+mixed_array.include?(2) # true
+```
+
+There are other common methods that are used to manipulate arrays. Some methods take parameters in order to return a new array or another output:
+
+```ruby
+mixed_array
+mixed_array.delete_at(1) # [2, "a", "b", "c"]
+mixed_array.delete('c') # [2, "a", "b"]
+
+[1,2,3,4,5].join(',') # "1,2,3,4,5"
+"1,2,3,4,5".split(',') # [1,2,3,4,5]
+```
+
+Please refer to `ri` for more information on arrays.
+
+## Hashes
+
+Hashes are a collection just like an array. However, they are _unordered_ and object-indexed (or key-value pairs).
+
+This object type is useful when the order of a list does not matter so much and the convenience of accessing items by a label is required. Each label (`key`) needs to be unique.
+
+Hashes are also known as dictionaries or associative arrays in other programming languages.
+
+An example of declaring a hash, how to access the value and reset a value:
+
+``` ruby
+# hashes.rb
+car = {
+  'brand' => 'Tesla',
+  'model' => 'X',
+  'color' => 'blue',
+  'interior_color' => 'tan',
+  'extras' => true
+}
+
+puts car['model']
+
+car['color'] = "red"
+car['doors'] = 2
+```
+
+Hashes have also useful methods that can be used to manipulate them. Refer to `ri` for details:
+
+``` ruby
+# hashes.rb
+puts car.keys # Shows available keys of a hash.
+puts car.values # Shows all values in a hash.
+puts car.to_a # Turns a hash into an array.
+```
+
+## Symbols
+
+One of the most misunderstood objects in Ruby as most languages don't have a similar one. A symbol is like a string that act as a label.
+
+Symbols are like strings but cannot be edited, they begin with a colon, are not delimited by quotes. 
+
+The name of the symbol follows rules that are more like variables than strings, all lowercase and separated by semicolons. For instance, `:first_name`.
+
+A symbol can be used to define keys in hashes. This can bring two benefits: First that symbols are editable, therefore keys cannot be changed somehow and secondly, using symbols allows Ruby to use memory more effectively:
+
+```ruby
+# symbols.rb
+person = {
+  :first_name => "Richard",
+  :last_name => "Bona"
+}
+
+person[:last_name]
+```
+
+Symbols can also be written in a shorthand form. They're still symbols even if the colon is at the end to separate the key from the value:
+
+```ruby
+# symbols.rb
+another_person = {
+  first_name: "Esperanza",
+  last_name: "Spalding"
+}
+
+another_person[:last_name]
+```
+
+## Booleans
+
+An object that is either `true` or `false`. Its mostly used for comparisons and logical expressions that define whether a piece of code runs.
+
+Booleans can either be defined with the keywords `true` or `false`, or even with `1` or `0`, the former evaluating to true and the latter to false.
+
+```ruby
+# booleans.rb
+x = true
+y = false
+```
+
+To define conditions, comparison and logic operators:
+
+|       |        |
+| ------------- |:-------------:|
+| Equal    | **==** |
+| Less than | **<** |
+| Greater than | **>** |
+| Less than or equal to | **<=** |
+| Greater than or equal to | **>=** |
+| Not | **!** |
+| Not equal | **!=** |
+| And | **&&** |
+| Or | **||** |
+
+Most of the time, booleans will be received as return values from a condition:
+
+```ruby
+# booleans.rb
+z = 20
+
+z == 77           # false
+z < 77            # true
+z > 77            # false
+z >= 77           # true
+z >= 77           # false
+!z                # false
+z != 77           # true
+z < 77 && z > 3   # true
+z < 77 || z > 10  # true
+```
+
+Additionally, booleans can be returned from methods that use the `?` sign:
+
+```ruby
+# booleans.rb
+z = 20
+w = []
+
+z.nil? 
+z.between?(1, 5)
+w.empty?
 
 ## Ranges
 
