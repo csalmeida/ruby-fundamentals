@@ -15,6 +15,7 @@ Contains initial experiments and files to do with the learning process of the [R
 - [Strings](#strings)
 - [Arrays](#arrays)
 - [Hashes](#hashes)
+- [Symbols](#symbols)
 
 ## Getting Started
 
@@ -491,3 +492,34 @@ puts car.values # Shows all values in a hash.
 puts car.to_a # Turns a hash into an array.
 ```
 
+## Symbols
+
+One of the most misunderstood objects in Ruby as most languages don't have a similar one. A symbol is like a string that act as a label.
+
+Symbols are like strings but cannot be edited, they begin with a colon, are not delimited by quotes. 
+
+The name of the symbol follows rules that are more like variables than strings, all lowercase and separated by semicolons. For instance, `:first_name`.
+
+A symbol can be used to define keys in hashes. This can bring two benefits: First that symbols are editable, therefore keys cannot be changed somehow and secondly, using symbols allows Ruby to use memory more effectively:
+
+```ruby
+# symbols.rb
+person = {
+  :first_name => "Richard",
+  :last_name => "Bona"
+}
+
+person[:last_name]
+```
+
+Symbols can also be written in a shorthand form. They're still symbols even if the colon is at the end to separate the key from the value:
+
+```ruby
+# symbols.rb
+another_person = {
+  first_name: "Esperanza",
+  last_name: "Spalding"
+}
+
+another_person[:last_name]
+```
