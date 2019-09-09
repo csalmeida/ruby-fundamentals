@@ -13,6 +13,7 @@ Contains initial experiments and files to do with the learning process of the [R
 - [Variables](#variables)
 - [Numbers](#numbers)
 - [Strings](#strings)
+- [Hashes](#hashes)
 
 ## Getting Started
 
@@ -350,3 +351,41 @@ Methods and math operations can be ran inside the interpolation brackets:
 sentence = "#{greeting}, #{target.upcase}" # hello, WORLD
 puts "2 + 2 = #{2 + 2}" # 2 + 2 = 4 
 ```
+
+## Hashes
+
+Hashes are a collection just like an array. However, they are _unordered_ and object-indexed (or key-value pairs).
+
+This object type is useful when the order of a list does not matter so much and the convenience of accessing items by a label is required. Each label (`key`) needs to be unique.
+
+Hashes are also known as dictionaries or associative arrays in other programming languages.
+
+An example of declaring a hash, how to access the value and reset a value:
+
+``` ruby
+# hashes.rb
+car = {
+  'brand' => 'Tesla',
+  'model' => 'X',
+  'color' => 'blue',
+  'interior_color' => 'tan',
+  'extras' => true
+}
+
+puts car['model']
+
+car['color'] = "red"
+car['doors'] = 2
+```
+
+Hashes have also useful methods that can be used to manipulate them. Refer to `ri` for details:
+
+``` ruby
+# hashes.rb
+puts car.keys # Shows available keys of a hash.
+puts car.values # Shows all values in a hash.
+puts car.to_a # Turns a hash into an array.
+```
+
+
+
