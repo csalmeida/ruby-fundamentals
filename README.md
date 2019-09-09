@@ -17,6 +17,7 @@ Contains initial experiments and files to do with the learning process of the [R
 - [Hashes](#hashes)
 - [Symbols](#symbols)
 - [Booleans](#booleans)
+- [Ranges](#ranges)
 
 ## Getting Started
 
@@ -578,3 +579,36 @@ w = []
 z.nil? 
 z.between?(1, 5)
 w.empty?
+
+## Ranges
+
+A range of sequential objects. Most of the time these will be numbers but they don't have to.
+
+Ranges can be inclusive or exclusive, but most of the time inclusive ones tend to be used:
+
+```ruby
+inclusive = 1..10 # 1 to 10
+exclusive = 1...10 # 1 to 9
+```
+
+```ruby
+inclusive.begin # 1
+inclusive.first # 1
+inclusive.end # 10
+exclusive.first # 1
+exclusive.end # 10 (surprising right?)
+```
+
+Ranges can be exploded to create arrays:
+
+```ruby
+numbers = [*inclusive] # [1,2,3,4,5,6,7,8,9,10]
+```
+
+Ranges are typically numbers but they don't have to be. Any objects with a sequential order can be put into a range:
+
+```ruby
+alphabet = 'a'..'z' # A range with the letters a to z.
+alphabet.include?('c') # true
+letters = [*alphabet] # [a, z]
+```
