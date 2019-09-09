@@ -13,6 +13,7 @@ Contains initial experiments and files to do with the learning process of the [R
 - [Variables](#variables)
 - [Numbers](#numbers)
 - [Strings](#strings)
+- [Symbols](#symbols)
 
 ## Getting Started
 
