@@ -17,6 +17,7 @@ Introduction to core features of the [Ruby](https://www.ruby-lang.org) programmi
 - [Symbols](#symbols)
 - [Booleans](#booleans)
 - [Ranges](#ranges)
+- [Constants](#constants)
 
 ## Getting Started
 
@@ -616,3 +617,16 @@ alphabet = 'a'..'z' # A range with the letters a to z.
 alphabet.include?('c') # true
 letters = [*alphabet] # [a, z]
 ```
+
+## Constants
+
+Constants are akin to variables with the difference being that once defined, it is not expected for that value to ever change on runtime.
+
+Constants are defined using all uppercase letters.
+
+```ruby
+# constants.rb
+DATE_OF_BIRTH = "March 21, 1940"
+```
+
+Usually, constants will throw an error in most programming languages it there's an attempt of changing them. However, Ruby will let the constant change and issue a warning instead.
