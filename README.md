@@ -1,7 +1,6 @@
 # Learning Ruby
 
-Contains initial experiments and files to do with the learning process of the [Ruby](https://www.ruby-lang.org) programming language.
-
+Introduction to core features of the [Ruby](https://www.ruby-lang.org) programming language and initial experiments.
 **Official Documentation:** https://ruby-doc.org/
 
 ## Table of Contents
@@ -28,6 +27,8 @@ ruby -v
 
 Should return something similar to:
 `ruby 2.3.7p456 (2018-03-28 revision 63024) [universal.x86_64-darwin18]`
+
+> If the `ruby` command is not found, [install Ruby](https://www.ruby-lang.org/en/documentation/installation/).
 
 To run an instruction on the command line:
 ```
@@ -94,17 +95,19 @@ Using `ri` allows documentation to be accessed offline if needed.
 
 ## Objects
 
-To learn Ruby, its helpful to star by understanding objects as the language is an extreme object-oriented programming language.
+To learn Ruby, it is helpful to start by understanding objects as the language is an extreme object-oriented programming language.
 
 In other languages that's not always the case, many other object-oriented languages make use of something called _"primitives"_ which make up the most basic parts of the language and they might not necessarily relate with each other.
 
 However in Ruby, _almost_ everything is an object and these can be interacted in similar ways. They are called objects because they are rather analogous to objects in the real world.
 
-For instace a `book` is an object with a certain properties and uses or behaviours. A book cover can have a blue cover, 250 pages, and a language it is published in.
+For instace a `book` is an object with certain properties, uses or behaviours. A book can have a blue cover, 250 pages, and a language it is published in.
 
 The `book` can be opened, read and closed.
 
 There are other books with different properties but all books are similar to each other in the sense they have a cover, a title, an author, pages and so on.
+
+Objects work in a similar way, they act as a boilerplate with the option to instantiate many copies, each with their own properties.
 
 ## Variables
 
@@ -149,7 +152,7 @@ There are some variables with special meaning. These have characters to specify 
 | **Local** | variables |
 | **Block** | variables |
 
-Most of the time local variables are used but other type will be expanded upon on later chapters. 
+Most of the time local variables are used but other types will be expanded upon on later chapters. 
 
 ## Numbers
 In Ruby, numbers are split into two categories of objects, `integers` for whole numbers and `floats` for decimals, when more precision is required.
@@ -249,7 +252,7 @@ To have the correct value return both at least one of them would require to be a
 
 ## Strings
 
-Strings are a common feature in most programming languages and they represent a sequence of characters and are used to represent pieces of text.
+Strings are a common feature in most programming languages, they represent a sequence of characters and are used to put together pieces of text.
 
 A string is represented by wrapping it in single or double quotes. There are differences between the two which might help decide when to choose one over the other.
 
@@ -262,7 +265,7 @@ A string is represented by wrapping it in single or double quotes. There are dif
 
 One common operation that is performed on `String`s is concatenation. It combines them into a single piece by adding them together.
 
-In the example below the words _hello_ and _world_ and contatenated. Notice how the comma and the space is also concatenated in the middle to show it correctly, otherwise it would represent _helloworld_ with no spacing:
+In the example below the words _hello_ and _world_ are contatenated. Notice how the comma and the space is also concatenated in the middle to show it correctly, otherwise it would output _helloworld_ with no spacing:
 
 ``` ruby
 "Hello" + ", " + "world" # hello, world
@@ -287,42 +290,42 @@ greeting << ", "
 greeting << "nature"
 ```
 
-Strings also can be repeated by using the multiplication (`*`) operator and methods can be ran on a string:
+Strings also can be repeated by using the multiplication operator  (`*`):
 
 ``` ruby
 # strings.rb
 "ruby " * 4 # Ohhuuohhhuhhohhh
 ```
 
-There are also many other methods that can be used with strings, consult `ri` to know which ones.
+There are many methods that can be used with strings, consult `ri` to know which ones.
 
 ``` ruby
 # strings.rb
-puts "ruby".capitalize
-puts "ruby".upcase.reverse
+puts "ruby".capitalize # Ruby
+puts "ruby".upcase.reverse # YBUR
 ```
 
 ### Escaping and Interpolation
 
-Besides the details mentioned above there are some details worth mentioned in strings, starting with string escaping.
+Besides the aspects mentioned above there are some details worth being aware of when working with strings, starting with string escaping.
 
-In the example below, there is a first string delimited by double quotes with _Let's escape_ inside. There is a single quote in this string and it is valid Ruby.
+In the example below, there is a first string delimited by double quotes with _Let's escape_ inside. There is a single quote in this string (in the word _let's_) and it is valid Ruby.
 
-Now looking at the second string, wrapped with single quotes, which introduces a problem. As Ruby established single quotes to be the delimiter of this string, it will mark its end when it finds its pair. So the string ends up being _Let_ instead of the intended _Let's escape_.
+The second string iswrapped with single quotes but it introduces a problem. As Ruby established single quotes to be the delimiter of this string, it will mark its end when it finds its pair. So the string ends up being _Let_ instead of the intended _Let's escape_.
 
 ``` ruby
 "Let's escape!"
 'Let's escape!'
 ```
 
-Similarly the same issue would occur with double quotes:
+The same issue would occur with double quotes:
 
 ``` ruby 
 'They said "hi" back'
 "They said "hi" back"
 ```
 
-To keep this issue from happening characters can pe escaped. This means that `"` or `'` can be used inside a string even in these cases, making it valid Ruby:
+To keep this issue from happening characters can be escaped. This means that `"` or `'` can be used inside a string even in these cases, making it valid Ruby:
 
 ``` ruby 
 # strings.rb
@@ -358,7 +361,7 @@ puts "2 + 2 = #{2 + 2}" # 2 + 2 = 4
 
 ## Arrays
 
-Ruby also supports arrays, an ordered, integer-index collection of objects.
+Ruby also supports arrays, an ordered, integer-indexed collection of objects.
 
 Objects are put into an ordered list and can be refered to by the position that they hold.
 
@@ -396,7 +399,7 @@ an_array << "Dex"
 puts an_array[4] # Dex
 ```
 
-Arrays can next other arrays and can be accessed starting from the end of the array by using negative values:
+Arrays can nest other arrays and can be accessed starting from the end of the array by using negative values:
 
 ``` ruby
 # arrays.rb
@@ -407,7 +410,7 @@ ruby_array[2] # "r"
 ruby_array[-1] # "y"
 ```
 
-Additionally, two positions or a range can be passed to return only a set of values:
+Additionally, two positions or a [range](#ranges) can be passed to return only a set of values.
 
 ``` ruby
 # arrays.rb
@@ -419,7 +422,7 @@ ruby_array[-4..-1] # ["r","u","b","y"]
 
 ### Array Methods
 
-Arrays are used very frequently in Ruby programs and there are useful methods that can be used to make it easier to work with them.
+Arrays are used very frequently in Ruby programs and there are useful methods that can be applied to make it easier to work with them.
 
 ```ruby
 # arrays.rb
@@ -496,13 +499,13 @@ puts car.to_a # Turns a hash into an array.
 
 ## Symbols
 
-One of the most misunderstood objects in Ruby as most languages don't have a similar one. A symbol is like a string that act as a label.
+One of the most misunderstood objects in Ruby as most languages don't have a similar one. A symbol is like a string that acts as a label.
 
-Symbols are like strings but cannot be edited, they begin with a colon, are not delimited by quotes. 
+Symbols are like strings but cannot be edited, they begin with a colon and are not delimited by quotes. 
 
-The name of the symbol follows rules that are more like variables than strings, all lowercase and separated by semicolons. For instance, `:first_name`.
+The name of the symbol follows the same conventions as variables variables, all lowercase and separated by semicolons. For instance, `:first_name`.
 
-A symbol can be used to define keys in hashes. This can bring two benefits: First that symbols are editable, therefore keys cannot be changed somehow and secondly, using symbols allows Ruby to use memory more effectively:
+A symbol can be used to define keys in hashes. This can bring two benefits: First that symbols are not editable, therefore keys cannot be changed somehow (their values can) and secondly, using symbols allows Ruby to use memory more effectively:
 
 ```ruby
 # symbols.rb
@@ -530,7 +533,7 @@ another_person[:last_name]
 
 An object that is either `true` or `false`. Its mostly used for comparisons and logical expressions that define whether a piece of code runs.
 
-Booleans can either be defined with the keywords `true` or `false`, or even with `1` or `0`, the former evaluating to true and the latter to false.
+Booleans can either be defined with the keywords `true` or `false`. Using `1` or `0` as booleans does not work. For instance, both `0 == true` and `1 == true` will evaluate to false.
 
 ```ruby
 # booleans.rb
@@ -579,6 +582,7 @@ w = []
 z.nil? 
 z.between?(1, 5)
 w.empty?
+```
 
 ## Ranges
 
