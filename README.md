@@ -20,6 +20,7 @@ Introduction to core features of the [Ruby](https://www.ruby-lang.org) programmi
   - [Ranges](#ranges)
   - [Constants](#constants)
   - [Nil](#nil)
+  - [Challenge: Roman Numerals](challenges/roman-numerals.rb)
 
 # Getting Started
 
@@ -95,6 +96,11 @@ Once a method is known it can be accessed directly by using the following:
 ri String#uppercase
 ```
 Using `ri` allows documentation to be accessed offline if needed.
+
+## Challenges
+There are a few challenges that were completed to solidify knowledge for each chapter. Consult [`/challenges`](challenges/) to access them, both include a file with the challenge and another with a `solution.rb`.
+
+> Challenges were designed by [Kevin Skoglund](https://twitter.com/kskoglund) for the [Ruby Essential Training course](https://www.lynda.com/Ruby-tutorials/Challenge-Roman-numerals/769286/807388-4.html) (linda.com)
 
 # Object Types
 An introduction to the various object types (also referred as data types) available in Ruby and how they work.
