@@ -6,21 +6,22 @@ Introduction to core features of the [Ruby](https://www.ruby-lang.org) programmi
 ## Table of Contents
 
 - [Getting Started](#getting-started)
-- [The Interactive Ruby Shell](#the-interactive-ruby-shell)
-- [Accessing Documentation](#accessing-documentation)
-- [Objects](#objects)
-- [Variables](#variables)
-- [Numbers](#numbers)
-- [Strings](#strings)
-- [Arrays](#arrays)
-- [Hashes](#hashes)
-- [Symbols](#symbols)
-- [Booleans](#booleans)
-- [Ranges](#ranges)
-- [Constants](#constants)
-- [Nil](#nil)
+  - [The Interactive Ruby Shell](#the-interactive-ruby-shell)
+  - [Accessing Documentation](#accessing-documentation)
+- [Object Types](#object-types)
+  - [Objects](#objects)
+  - [Variables](#variables)
+  - [Numbers](#numbers)
+  - [Strings](#strings)
+  - [Arrays](#arrays)
+  - [Hashes](#hashes)
+  - [Symbols](#symbols)
+  - [Booleans](#booleans)
+  - [Ranges](#ranges)
+  - [Constants](#constants)
+  - [Nil](#nil)
 
-## Getting Started
+# Getting Started
 
 To get started Ruby needs to be installed on the machine:
 ```
@@ -94,6 +95,9 @@ Once a method is known it can be accessed directly by using the following:
 ri String#uppercase
 ```
 Using `ri` allows documentation to be accessed offline if needed.
+
+# Object Types
+An introduction to the various object types (also referred as data types) available in Ruby and how they work.
 
 ## Objects
 
