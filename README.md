@@ -6,19 +6,22 @@ Introduction to core features of the [Ruby](https://www.ruby-lang.org) programmi
 ## Table of Contents
 
 - [Getting Started](#getting-started)
-- [The Interactive Ruby Shell](#the-interactive-ruby-shell)
-- [Accessing Documentation](#accessing-documentation)
-- [Objects](#objects)
-- [Variables](#variables)
-- [Numbers](#numbers)
-- [Strings](#strings)
-- [Arrays](#arrays)
-- [Hashes](#hashes)
-- [Symbols](#symbols)
-- [Booleans](#booleans)
-- [Ranges](#ranges)
+  - [The Interactive Ruby Shell](#the-interactive-ruby-shell)
+  - [Accessing Documentation](#accessing-documentation)
+- [Object Types](#object-types)
+  - [Objects](#objects)
+  - [Variables](#variables)
+  - [Numbers](#numbers)
+  - [Strings](#strings)
+  - [Arrays](#arrays)
+  - [Hashes](#hashes)
+  - [Symbols](#symbols)
+  - [Booleans](#booleans)
+  - [Ranges](#ranges)
+  - [Constants](#constants)
+  - [Nil](#nil)
 
-## Getting Started
+# Getting Started
 
 To get started Ruby needs to be installed on the machine:
 ```
@@ -92,6 +95,9 @@ Once a method is known it can be accessed directly by using the following:
 ri String#uppercase
 ```
 Using `ri` allows documentation to be accessed offline if needed.
+
+# Object Types
+An introduction to the various object types (also referred as data types) available in Ruby and how they work.
 
 ## Objects
 
@@ -616,3 +622,40 @@ alphabet = 'a'..'z' # A range with the letters a to z.
 alphabet.include?('c') # true
 letters = [*alphabet] # [a, z]
 ```
+
+## Constants
+
+Constants are akin to variables with the difference being that once defined, it is not expected for that value to ever change on runtime.
+
+Constants are defined using all uppercase letters.
+
+```ruby
+# constants.rb
+DATE_OF_BIRTH = "March 21, 1940"
+```
+
+Usually, constants will throw an error in most programming languages it there's an attempt of changing them. However, Ruby will let the constant change and issue a warning instead.
+
+## Nil
+
+Nil is an object that equates to nothing. Some languages might call it `null`. For instance `nil` will be returned when a variable is empty.
+
+```ruby
+# nil.rb
+money_in_the_bank = nil
+
+puts money_in_the_bank.class # NilClass
+```
+
+In some languages `nil` can equate to `false` but this is not the case in Ruby. In the cases where a boolean value must be returned it is best to define a conditional statement instead asking if the value is `nil`:
+
+```ruby
+# nil.rb
+money_in_the_bank.nil? # true
+
+money_in_the_bank == nil # true
+
+!money_in_the_bank # true
+```
+
+All the above statements will return true if the variable `money_in_the_bank` is empty.
