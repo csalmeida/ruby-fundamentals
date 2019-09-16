@@ -24,6 +24,8 @@ Introduction to core features of the [Ruby](https://www.ruby-lang.org) programmi
   - [Challenge: Roman Numerals](challenges/roman-numerals.rb)
 - [Control Structures](#control-structures)
   - [Conditionals](#conditionals)
+  - [Loops](#loops)
+
 # Getting Started
 
 To get started Ruby needs to be installed on the machine:
@@ -838,3 +840,72 @@ Lastly, conditionals can be used as _statement modifiers_. These are usually use
 # control-structures/conditionals.rb
 puts favorite_fruit if fruit == favourite_fruit
 ```
+
+## Loops
+
+Used to repeat a block of code over again, the simplest loop in Ruby is comprised of the `loop`, `do` and `end` keyword.
+
+```ruby
+loop do
+  # code to repeat here
+end
+```
+
+However, this code would repeat forever so a conditional or a way to limit the iterations if necessary to close the loop. There are a few _control methods_ that can be used to achieve this:
+
+|       |        |
+| ------------- |:-------------:|
+| `break`     | Terminates the loop |
+| `next`     | Jump to next iteration |
+| `redo` | Redo an iteration |
+| `retry` | Start the whole loop over |
+
+The simplest loop in Ruby would look similar to this.
+
+> An `index` and a condition is used to keep track of how many iterations are left to do.
+
+```ruby
+# control-structures/loops.rb
+index = 5
+loop do
+  break if index <= 0
+  puts "Countdown: #{index}"
+  index -= 1
+end
+puts "Blast off!"
+```
+
+However, defining loops this way in Ruby is not so common as there are simpler was of achieving the same results:
+
+```ruby
+while boolean
+  # run code
+end
+
+until boolean
+  # run code
+end
+```
+
+A more common way of defining loops is using `while` or `until`. The former iterates while a condition is met, whilst the latter will iterate until one is met.
+
+The `break` and `do` keywords are implicit and can be ommited:
+
+```ruby
+# control-structures/loops.rb
+index = 5
+while index >= 0
+  puts "Countdown: #{index}"
+  index -= 1
+end 
+puts "Blast off!"
+
+index = 5
+until index <= 0
+  puts "Countdown: #{index}"
+  index -= 1
+end 
+puts "Blast off!"
+```
+
+This is how to work with loops in Ruby.
