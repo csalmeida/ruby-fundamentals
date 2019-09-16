@@ -48,7 +48,7 @@ touch hello.rb
 
 Add an instruction to the file:
 ``` ruby
-# hello.rb
+# object-types/hello.rb
 puts "Hello World"
 ```
 
@@ -124,7 +124,7 @@ They keep track of objects whilst programming and can be treated as objects once
 In the example below, `x`, `y` and `z` are all variables. They're not objects but they reference them (yes, `integers` are objects too) and they can reference each other.
 
 ``` ruby
-# variables.rb
+# object-types/variables.rb
 x = 1
 y = x + 2
 z = y - x
@@ -133,7 +133,7 @@ z = y - x
 The variables names used for the example above are simple and are valid in Ruby. However, Ruby has it's own convention for naming variables by separating words with an `_`, in plain English:
 
 ``` ruby
-# variables.rb
+# object-types/variables.rb
 first_name = "Cristiano"
 enjoying_ruby = true
 articles_written = 100
@@ -142,7 +142,7 @@ articles_written = 100
 Variables not only allow values to be assigned to them but also to be retrieved:
 
 ``` ruby
-# variables.rb
+# object-types/variables.rb
 x = 2077
 puts x
 ```
@@ -165,7 +165,7 @@ In Ruby, numbers are split into two categories of objects, `integers` for whole 
 
 Math operations can be performed:
 ``` ruby 
-# numbers.rb
+# object-types/numbers.rb
 puts "Addition (4+2):"
 puts 4 + 2
 
@@ -190,7 +190,7 @@ puts 4 % 2
 Numbers can be assigned to variables like any other object and math assigned operators can be used as well. This allows a number to be added, subtracted, divided or multiplied to the value a variable currently holds:
 
 ``` ruby
-# numbers.rb
+# object-types/numbers.rb
 
 # Assigning a number to x.
 x = 4
@@ -280,7 +280,7 @@ In the example below the words _hello_ and _world_ are contatenated. Notice how 
 Strings can also be assigned to variables like any other object:
 
 ``` ruby
-# strings.rb
+# object-types/strings.rb
 greeting = "Hello"
 target = "world"
 sentence = greeting + ", " + target
@@ -290,7 +290,7 @@ puts sentence # hello, world
 Another way to join strings together is by using the `append` operator. It looks like the _less than, less than_ sign and suggests that one string is being shoved into the other:
 
 ``` ruby
-# string.rb
+# object-types/string.rb
 greeting = "Hello"
 greeting << ", "
 greeting << "nature"
@@ -299,14 +299,14 @@ greeting << "nature"
 Strings also can be repeated by using the multiplication operator  (`*`):
 
 ``` ruby
-# strings.rb
+# object-types/strings.rb
 "ruby " * 4 # Ohhuuohhhuhhohhh
 ```
 
 There are many methods that can be used with strings, consult `ri` to know which ones.
 
 ``` ruby
-# strings.rb
+# object-types/strings.rb
 puts "ruby".capitalize # Ruby
 puts "ruby".upcase.reverse # YBUR
 ```
@@ -334,7 +334,7 @@ The same issue would occur with double quotes:
 To keep this issue from happening characters can be escaped. This means that `"` or `'` can be used inside a string even in these cases, making it valid Ruby:
 
 ``` ruby 
-# strings.rb
+# object-types/strings.rb
 'Let\'s escape!' # Let's escape!
 "They said \"hi\" back" # They said "hi" back
 ```
@@ -351,7 +351,7 @@ Additionally, interpolation can be used on strings. This means that something el
 Same as the example above, interpolation only works on `"` strings:
 
 ``` ruby
-# strings.rb
+# object-types/strings.rb
 greeting = "Hello"
 target = "world"
 sentence = "#{greeting}, #{target}"
@@ -369,14 +369,14 @@ puts "2 + 2 = #{2 + 2}" # 2 + 2 = 4
 
 Ruby also supports arrays, an ordered, integer-indexed collection of objects.
 
-Objects are put into an ordered list and can be refered to by the position that they hold.
+Objects are put into an ordered list and can be referred to by the position that they hold.
 
 The position count starts at `0` (0 indexed), common on most programming languages. This means that the first item of an array is accessed by refering `0` as its index, not `1`.
 
 In the example below an empty array is declared. A second one is also declared with both strings and an integer inside:
 
 ``` ruby
-# arrays.rb
+# object-types/arrays.rb
 empty_array = []
 an_array = ['a', 'b', 'V', 2077]
 ```
@@ -384,7 +384,7 @@ an_array = ['a', 'b', 'V', 2077]
 To access these values the position must be referenced, positions that don't have a value return `nil`:
 
 ``` ruby
-# arrays.rb
+# object-types/arrays.rb
 an_array[0] # a
 an_array[3] # 2077
 an_array[4] # nil
@@ -393,14 +393,14 @@ an_array[4] # nil
 Values can also be assigned to array positions, _a_ will be replaced with _Bug_:
 
 ``` ruby
-# arrays.rb
+# object-types/arrays.rb
 an_array[0] = "Bug"
 ```
 
 A new item can be added at the end of the array by using the `append` operator:
 
 ``` ruby
-# arrays.rb
+# object-types/arrays.rb
 an_array << "Dex"
 puts an_array[4] # Dex
 ```
@@ -408,7 +408,7 @@ puts an_array[4] # Dex
 Arrays can nest other arrays and can be accessed starting from the end of the array by using negative values:
 
 ``` ruby
-# arrays.rb
+# object-types/arrays.rb
 a_second_array = ["Omboa", "Kalunga", "Kimbo", ["Ocuria", "Onjo"]]
 
 ruby_array = ["g","o","r","u","b","y"]
@@ -419,7 +419,7 @@ ruby_array[-1] # "y"
 Additionally, two positions or a [range](#ranges) can be passed to return only a set of values.
 
 ``` ruby
-# arrays.rb
+# object-types/arrays.rb
 ruby_array[2,4] # ["r","u","b","y"]
 ruby_array[-2,2] # ["b","y"]
 ruby_array[2..3] # ["r","u"]
@@ -431,7 +431,7 @@ ruby_array[-4..-1] # ["r","u","b","y"]
 Arrays are used very frequently in Ruby programs and there are useful methods that can be applied to make it easier to work with them.
 
 ```ruby
-# arrays.rb
+# object-types/arrays.rb
 mixed_array = [2,4,['a', 'b'], nil, 4, 'c']
 mixed_array.length # 6
 mixed_array.size # 6
@@ -442,7 +442,7 @@ mixed_array.shuffle # [["a", "b"], 4, nil, 2, 4, "c"]
 The methods above return a new value but don't affect the array stored in `mixed_array`. To make the change permanent a `!` can be added at the end of the method declaration:
 
 ``` ruby
-# arrays.rb
+# object-types/arrays.rb
 mixed_array.uniq! # [2, 4, ["a", "b"], nil, "c"]
 mixed_array.compact! # [2, 4, ["a", "b"], "c"]
 mixed_array.flatten! # [2, 4, "a", "b", "c"]
@@ -451,7 +451,7 @@ mixed_array.flatten! # [2, 4, "a", "b", "c"]
 The '?' is another Ruby idiom that can be also used in methods to query or find out about and in most cases it return a [`boolean`](#booleans) value:
 
 ``` ruby
-# arrays.rb
+# object-types/arrays.rb
 mixed_array.include?(2) # true
 ```
 
@@ -479,7 +479,7 @@ Hashes are also known as dictionaries or associative arrays in other programming
 An example of declaring a hash, how to access the value and reset a value:
 
 ``` ruby
-# hashes.rb
+# object-types/hashes.rb
 car = {
   'brand' => 'Tesla',
   'model' => 'X',
@@ -497,7 +497,7 @@ car['doors'] = 2
 Hashes have also useful methods that can be used to manipulate them. Refer to `ri` for details:
 
 ``` ruby
-# hashes.rb
+# object-types/hashes.rb
 puts car.keys # Shows available keys of a hash.
 puts car.values # Shows all values in a hash.
 puts car.to_a # Turns a hash into an array.
@@ -514,7 +514,7 @@ The name of the symbol follows the same conventions as variables variables, all 
 A symbol can be used to define keys in hashes. This can bring two benefits: First that symbols are not editable, therefore keys cannot be changed somehow (their values can) and secondly, using symbols allows Ruby to use memory more effectively:
 
 ```ruby
-# symbols.rb
+# object-types/symbols.rb
 person = {
   :first_name => "Richard",
   :last_name => "Bona"
@@ -526,7 +526,7 @@ person[:last_name]
 Symbols can also be written in a shorthand form. They're still symbols even if the colon is at the end to separate the key from the value:
 
 ```ruby
-# symbols.rb
+# object-types/symbols.rb
 another_person = {
   first_name: "Esperanza",
   last_name: "Spalding"
@@ -542,7 +542,7 @@ An object that is either `true` or `false`. Its mostly used for comparisons and 
 Booleans can either be defined with the keywords `true` or `false`. Using `1` or `0` as booleans does not work. For instance, both `0 == true` and `1 == true` will evaluate to false.
 
 ```ruby
-# booleans.rb
+# object-types/booleans.rb
 x = true
 y = false
 ```
@@ -564,7 +564,7 @@ To define conditions, comparison and logic operators:
 Most of the time, booleans will be received as return values from a condition:
 
 ```ruby
-# booleans.rb
+# object-types/booleans.rb
 z = 20
 
 z == 77           # false
@@ -581,7 +581,7 @@ z < 77 || z > 10  # true
 Additionally, booleans can be returned from methods that use the `?` sign:
 
 ```ruby
-# booleans.rb
+# object-types/booleans.rb
 z = 20
 w = []
 
@@ -630,7 +630,7 @@ Constants are akin to variables with the difference being that once defined, it 
 Constants are defined using all uppercase letters.
 
 ```ruby
-# constants.rb
+# object-types/constants.rb
 DATE_OF_BIRTH = "March 21, 1940"
 ```
 
@@ -641,7 +641,7 @@ Usually, constants will throw an error in most programming languages it there's 
 Nil is an object that equates to nothing. Some languages might call it `null`. For instance `nil` will be returned when a variable is empty.
 
 ```ruby
-# nil.rb
+# object-types/nil.rb
 money_in_the_bank = nil
 
 puts money_in_the_bank.class # NilClass
@@ -650,7 +650,7 @@ puts money_in_the_bank.class # NilClass
 In some languages `nil` can equate to `false` but this is not the case in Ruby. In the cases where a boolean value must be returned it is best to define a conditional statement instead asking if the value is `nil`:
 
 ```ruby
-# nil.rb
+# object-types/nil.rb
 money_in_the_bank.nil? # true
 
 money_in_the_bank == nil # true
