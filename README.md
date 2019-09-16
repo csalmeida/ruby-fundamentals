@@ -22,7 +22,8 @@ Introduction to core features of the [Ruby](https://www.ruby-lang.org) programmi
   - [Constants](#constants)
   - [Nil](#nil)
   - [Challenge: Roman Numerals](challenges/roman-numerals.rb)
-
+- [Control Structures](#control-structures)
+  - [Conditionals](#conditionals)
 # Getting Started
 
 To get started Ruby needs to be installed on the machine:
@@ -666,3 +667,174 @@ money_in_the_bank == nil # true
 ```
 
 All the above statements will return true if the variable `money_in_the_bank` is empty.
+
+# Control Structures
+
+They add dynamism to the code being written and allow to determine the circumstances when code executes. For instance, using conditionals helps to define a code block to only run when a condition is met. Loops can run a code block a specific number of times or until a condition is met. Furthermore, there are iterators which uses a set of objects and it will loop moving through an `array` or a `hash`.
+
+Control structures require multiple lines of code to be defined so it is recommended that these are written in a file rather than `irb` as they have to be retyped on mistakes.
+
+## Conditionals
+
+Conditionals define when a code block runs and they are declared with the `if`, `else` and `elsif` keywords. The condition it takes must return a `boolean` value, evaluating to either `true` or `false`.
+
+```ruby
+if boolean
+ # execure this code
+end
+```
+
+The code between the `if` condition and the `end` keyword forms block that will only execute if that condition is met.
+
+```ruby
+# control-structures/conditionals.rb
+if fruit == 'mango'
+  puts "A #{fruit.upcase}! They're so tasty!"
+end
+```
+
+An `else` keyword may be introduced if something else should run when the condition is not met:
+
+```ruby
+# control-structures/conditionals.rb
+if fruit == 'mango'
+  puts "A #{fruit.upcase}! They're so tasty!"
+else
+  puts "Oh! I guess there are no Mangoes left."
+end
+```
+
+Conditionals can also accommodate more than one comparison. If the previous one is not met, it will keep working the block down until one `elsif` is met or when the `else` block is hit.
+
+```ruby
+# control-structures/conditionals.rb
+if fruit == 'mango'
+  puts "A #{fruit.upcase}! They're so tasty!"
+elsif fruit == 'pineapple'
+  puts "Pineapples are nice too, though a bit controversial on pizza."
+else
+  puts "Oh! I guess there's no fruit left."
+end
+```
+
+### Unless
+The `unless` keyword is the opposite of `if` and it effectively means _"if not"_. It can be used to add readability to a block:
+
+```ruby
+# control-structures/conditionals.rb
+unless fruit == 'mango'
+  puts "This fruit is not a mango."
+end
+```
+
+### Case
+The if/else statement structure makes sense when a couple of conditionals is being checked. However, once there are a number of them a `case` statement should be considered.
+
+```ruby
+case
+when boolean
+  # code
+when boolean
+  # another piece of code
+when boolean
+  # yet another block of code
+else
+  # if no condition is met, run this line
+end
+```
+
+Using cases makes writing blocks with multiple conditions clearer:
+
+```ruby
+# control-structures/conditionals.rb
+case
+when fruit == 'mango'
+  puts "A #{fruit.upcase}! They're so tasty!"
+when fruit.length > 5
+  puts "The name of this fruit is long."
+when fruit = 'pineapple'
+  puts "Pineapples are nice too, though a bit controversial on pizza."
+else
+  puts "Oh! I guess there's no fruit left."
+end
+```
+
+Cases can also be implemented on a slightly different format where a test value is put in place and will be compared with the values provided for each block, if it matches it will run the statements inside it. This implementation is more akin to a `switch` statement present in most programming languages;
+
+```ruby
+# control-structures/conditionals.rb
+case fruit
+when 'mango'
+  puts "A #{fruit.upcase}! They're so tasty!"
+when 1
+  puts "Fruit cannot be a number."
+when 'pineapple'
+  puts "Pineapples are nice too, though a bit controversial on pizza."
+else
+  puts "Oh! I guess there's no fruit left."
+end
+```
+
+Now the variable being compared is added as a `case` and Ruby will work down each value until one matches or hits the `else` statement.
+
+### Shorthand for conditionals
+
+There are shorthand for writing conditionals that can be applied when the logic is simple, for instance a _ternary operator_:
+
+```ruby
+# control-structures/conditionals.rb
+puts fruit == 'mango' ? "A #{fruit.upcase}! They're so tasty!" : "Oh! I guess there are no Mangoes left."
+```
+
+On the regular if/else syntax the same logic would look like this:
+
+```ruby
+# control-structures/conditionals.rb
+if fruit == 'mango'
+  puts "A #{fruit.upcase}! They're so tasty!"
+else
+  puts "Oh! I guess there are no Mangoes left."
+end
+```
+
+There is also the _or operator_, defined but the pipe sign `||` and it is useful when setting default values or evaluating based on two or more conditions concurrently:
+
+```ruby
+# control-structures/conditionals.rb
+favorite_fruit = fruit || 'apple' # pineapple
+```
+
+The example above is saying "if `fruit` doesn't have a value or evaluates to `false` assign `'apple'` as the favorite fruit.
+
+```ruby
+# control-structures/conditionals.rb
+if fruit == 'mango' || fruit == 'pineapple'
+  puts "A #{fruit.upcase}! They're so tasty!"
+else
+  puts "Oh! I guess there are no Mangoes left."
+end
+```
+
+The OR operator can also set default values if no value exists:
+
+```ruby
+# control-structures/conditionals.rb
+favorite_fruit ||= 'passion fruit'
+# OR
+favorite_fruit = 'passion fruit' unless favorite_fruit
+```
+
+In this case the statement is different, it is declared that if `favourite_fruit` has no value then set it to `'passion fruit'`, otherwise keep it as it is. It is the same as:
+
+```ruby
+unless favorite_fruit
+  favorite_fruit = 'passion fruit'
+end
+```
+
+Lastly, conditionals can be used as _statement modifiers_. These are usually used sparingly and are declared in a single line.
+
+```ruby
+# control-structures/conditionals.rb
+puts favorite_fruit if fruit == favourite_fruit
+```
