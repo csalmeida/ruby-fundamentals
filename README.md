@@ -18,6 +18,7 @@ Introduction to core features of the [Ruby](https://www.ruby-lang.org) programmi
 - [Booleans](#booleans)
 - [Ranges](#ranges)
 - [Constants](#constants)
+- [Nil](#nil)
 
 ## Getting Started
 
@@ -630,3 +631,27 @@ DATE_OF_BIRTH = "March 21, 1940"
 ```
 
 Usually, constants will throw an error in most programming languages it there's an attempt of changing them. However, Ruby will let the constant change and issue a warning instead.
+
+## Nil
+
+Nil is an object that equates to nothing. Some languages might call it `null`. For instance `nil` will be returned when a variable is empty.
+
+```ruby
+# nil.rb
+money_in_the_bank = nil
+
+puts money_in_the_bank.class # NilClass
+```
+
+In some languages `nil` can equate to `false` but this is not the case in Ruby. In the cases where a boolean value must be returned it is best to define a conditional statement instead asking if the value is `nil`:
+
+```ruby
+# nil.rb
+money_in_the_bank.nil? # true
+
+money_in_the_bank == nil # true
+
+!money_in_the_bank # true
+```
+
+All the above statements will return true if the variable `money_in_the_bank` is empty.
