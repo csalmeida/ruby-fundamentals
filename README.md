@@ -8,6 +8,7 @@ Introduction to core features of the [Ruby](https://www.ruby-lang.org) programmi
 - [Getting Started](#getting-started)
   - [The Interactive Ruby Shell](#the-interactive-ruby-shell)
   - [Accessing Documentation](#accessing-documentation)
+  - [Challenges](#challenges)
 - [Object Types](#object-types)
   - [Objects](#objects)
   - [Variables](#variables)
