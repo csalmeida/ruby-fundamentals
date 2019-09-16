@@ -832,7 +832,7 @@ unless favorite_fruit
 end
 ```
 
-Lastly, conditionals can be used as _statement modifiers_. These are usually used sparingly and are declared in a single line.
+Lastly, conditionals can be used as _statement modifiers_. These are usually used sparingly as a complete `if` statement tends to be more readable and are declared in a single line.
 
 ```ruby
 # control-structures/conditionals.rb
