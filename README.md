@@ -25,6 +25,7 @@ Introduction to core features of the [Ruby](https://www.ruby-lang.org) programmi
 - [Control Structures](#control-structures)
   - [Conditionals](#conditionals)
   - [Loops](#loops)
+  - [Iterators](#iterators)
 
 # Getting Started
 
@@ -909,3 +910,73 @@ puts "Blast off!"
 ```
 
 This is how to work with loops in Ruby.
+
+## Iterators
+
+Loops in Ruby are fairly primitive since `iterators` have robust support in the language and are used far more often.
+
+To iterate means to say or do again. In the case of programming it means to apply a procedure repeatedly. 
+
+An `iterator` is going to perform code on each item in a set. Most of the time could be an `array` or a `hash` but it could also be a `range`.
+
+The simplest iterator is the `times` iterator:
+
+```ruby
+# control-structures/iterators.rb
+index = 5
+index.times do
+  puts "Countdown: #{index}"
+  index -= 1
+end
+puts "Blast off!"
+```
+
+There are other types of iterators, in the examples below these are wrapped in curly braces (`{}`) since they're on a single line. However, the word `do` and `end` can be used instead to wrap them in a code block:
+
+|       |        |
+| ------------- |:-------------:|
+| **times**     | `5.times { puts "Hello" }` |
+| **upto**     | `1.upto(5) { puts "Hello" }` |
+| **downto** | `5.downto(1) { puts "Hello" }` |
+| **each** | `(1..5).each { puts "Hello" }` |
+
+However, running iterators on a single line does not allow the previous example to be create since it makes use of the current iteration number (`index`) to count down.
+
+To access it a block variable needs to be passed in, allowing to make use of the value as it iterates through:
+
+```ruby
+# control-structures/iterators.rb
+5.downto(1) do |index|
+    puts "Countdown: #{index}"
+end
+puts "Blast off!"
+```
+
+Using an `iterator` the `index` does not need to be incremented (or decremented in this case), Ruby does it automatically.
+
+### Iterators by class
+
+There are a number of iterators that can be applied to a class specifically:
+
+|       |        |
+| ------------- |:-------------:|
+| **numbers**     | `times`, `upto`, `downto`, `step` |
+| **range**     | `each`, `step` |
+| **string** | `each_line`, `each_char`, `each_byte` |
+| **array** | `each`, `each_index`, `each_with_index` |
+| **hash** | `each`, `each_key`, `each_value`, `each_pair` |
+
+Please [consult the documentation](https://ruby-doc.org/docs/ruby-doc-bundle/UsersGuide/rg/iterators.html) for more information on how to use class specific iterators.
+
+An `each` loop can be written with the `for` keyword as well, although most Rubyists tend to prefer the former way of defining them:
+
+```ruby
+# control-structures/iterators.rb
+fruits.each do |index|
+  puts "I like #{fruits[index]}"
+end
+
+for fruits in fruit
+  puts "#{fruit} are nice"
+end
+```
