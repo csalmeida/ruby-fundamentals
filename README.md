@@ -26,6 +26,8 @@ Introduction to core features of the [Ruby](https://www.ruby-lang.org) programmi
   - [Conditionals](#conditionals)
   - [Loops](#loops)
   - [Iterators](#iterators)
+- [Scripting](#scripting)
+  - [Best Practices](#best-practices)
 
 # Getting Started
 
@@ -980,3 +982,20 @@ for fruits in fruit
   puts "#{fruit} are nice"
 end
 ```
+
+# Scripting
+
+Expanding on Ruby scripting best practices and how to take in user input.
+
+## Best practices
+
+As a start it is convention that Ruby files are named with the `.rb` extension. This hints the operative system (OS) that the contents of a file are to be parsed using the Ruby interpreter.
+
+Another best practice is to add a `shebang` at the top of the file. This is a Unix convention which stands for a `#!` and it is used to specify what should be used to run the program.
+
+```ruby
+#!/usr/bin/env ruby
+```
+The line above assures programs are portable, it checks the user environment (`env`) and figures out which version of Ruby is active (`ruby`)
+
+Unix environments will use it to run the script whilst systems such as Windows will ignore it as it will look like a comment and will make use of file association instead.
