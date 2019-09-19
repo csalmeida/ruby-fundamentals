@@ -1015,5 +1015,17 @@ There are a few methods available  that exit a script:
 | `abort(msg)`     | Exits the script with the possibility of returning a message. |
 | `control+c` | Combination of keys that sends an interrupt signal, exiting the script at any stage. |
 
+```ruby
+# ruby-scripting/exit-script.rb
+legends.each do |legend|
+  if legend == 'kalunga'
+    exit
+  end
+  puts "#{legend.capitalize} joined the circle."
+end
+```
 
+The example above shows the `exit` keyword in use. If the condition is met the script will exit before it prints the sentence with its name. 
+
+This is different than `break` for instance, since the script would still run until the end and only the loop would stop running.
 
