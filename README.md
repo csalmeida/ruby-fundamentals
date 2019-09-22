@@ -28,6 +28,7 @@ Introduction to core features of the [Ruby](https://www.ruby-lang.org) programmi
   - [Iterators](#iterators)
 - [Scripting](#scripting)
   - [Best Practices](#best-practices)
+  - [Exit a running script](#exit-a-running-script)
 
 # Getting Started
 
@@ -999,3 +1000,32 @@ Another best practice is to add a `shebang` at the top of the file. This is a Un
 The line above assures programs are portable, it checks the user environment (`env`) and figures out which version of Ruby is active (`ruby`)
 
 Unix environments will use it to run the script whilst systems such as Windows will ignore it as it will look like a comment and will make use of file association instead.
+
+## Exit a running script
+
+There are multiple ways of exiting a script in Ruby. The most common way is to let it end automatically after running all the defined statements in a file.
+
+Sometimes programs might have another reason to exit such as by a certain condition being met or by user input.
+
+There are a few methods available  that exit a script:
+
+|       |        |
+| ------------- |:-------------:|
+| `exit` or `exit!`     | Exits the script |
+| `abort(msg)`     | Exits the script with the possibility of returning a message. |
+| `control+c` | Combination of keys that sends an interrupt signal, exiting the script at any stage. |
+
+```ruby
+# ruby-scripting/exit-script.rb
+legends.each do |legend|
+  if legend == 'kalunga'
+    exit
+  end
+  puts "#{legend.capitalize} joined the circle."
+end
+```
+
+The example above shows the `exit` keyword in use. If the condition is met the script will exit before it prints the sentence with its name. 
+
+This is different than `break` for instance, since the script would still run until the end and only the loop would stop running.
+
