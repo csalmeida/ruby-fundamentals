@@ -29,6 +29,7 @@ Introduction to core features of the [Ruby](https://www.ruby-lang.org) programmi
 - [Scripting](#scripting)
   - [Best Practices](#best-practices)
   - [Exit a running script](#exit-a-running-script)
+  - [Input and output](#input-and-output)
 
 # Getting Started
 
@@ -1029,3 +1030,52 @@ The example above shows the `exit` keyword in use. If the condition is met the s
 
 This is different than `break` for instance, since the script would still run until the end and only the loop would stop running.
 
+## Input and output
+
+Exploring how to input and output values in Ruby.
+
+### Output
+
+A command used throughout this document is `puts`, which allows something to be printed in the console.
+
+There's a variation of `puts` which is simply `print`, with the difference being that `puts` _always_ adds a line return at the end whilst `print` does not unless specified.
+
+### Input
+
+There's also the ability to do input using `gets`.
+It will take everything typed until a user hits return.
+
+```ruby
+# ruby-scripting/input-output.rb
+print "What is your name? "
+response = gets
+
+puts "Hello, #{response}!"
+```
+
+In the example above, a question is printed and the input is stored in a variable called `response`. Then, it is printed again with a greeting using `puts`.
+
+However, the output would not look quite right since `gets` much like `puts`, adds a new line at the end so the last character of the greeting would be in a new line:
+
+```bash
+Hello, Omboa
+!
+```
+
+To address this two methods can be used alongside `gets`, namely, `chop` and `chomp`. `chop` removes the last character of a string whilst `chomp` removes the last character only if it's a new line character.
+
+```ruby
+# ruby-scripting/input-output.rb
+print "What is your name? "
+response = gets.chomp
+
+puts "Hello, #{response}!"
+```
+
+Now the response would look as expected:
+
+```bash
+Hello, Omboa!
+```
+
+Using input and outputs can help when interacting with the user.
