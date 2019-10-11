@@ -920,7 +920,7 @@ This is how to work with loops in Ruby.
 
 ## Iterators
 
-Loops in Ruby are fairly primitive since `iterators` have robust support in the language and are used far more often.
+Loops in Ruby are fairly primitive when compared to `iterators`. They have robust support in the language and are used far more often than loops.
 
 To iterate means to say or do again. In the case of programming it means to apply a procedure repeatedly. 
 
