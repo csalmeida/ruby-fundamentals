@@ -30,7 +30,7 @@ print "-> "
 user_max_number = gets.chomp.to_i
 puts
 # Only store input if user typed a number.
-until user_max_number.is_a?(Fixnum) && user_max_number != 0
+until user_max_number.is_a?(Integer) && user_max_number != 0
   puts "Try a number (can't be 0): "
   print "-> "
   user_max_number = gets.chomp.to_i
@@ -47,19 +47,13 @@ puts "You chose a limit of #{MAX_NUMBER} and can try to guess the number #{MAX_A
 # Ask the user for a guess and let them know if they got it right or to try again:
 1.upto(MAX_ATTEMPTS) do |guess_number|
   print "Guess #{guess_number}: "
-  guess = gets.chomp
-
-  if guess == 'hint'
-    guess = gets.chomp.to_i  
-  else
-    guess = gets.chomp.to_i
-  end
+  guess = gets.chomp.to_i
 
   # Use to determine how close is guess from the answer.
   if guess > RANDOM_NUMBER
-    guess_difference = guess - RANDOM_NUMBER      
+    guess_difference = guess - RANDOM_NUMBER.to_f 
   else
-    guess_difference = RANDOM_NUMBER - guess
+    guess_difference = RANDOM_NUMBER - guess.to_f
   end
 
   case
@@ -68,12 +62,14 @@ puts "You chose a limit of #{MAX_NUMBER} and can try to guess the number #{MAX_A
   when guess == RANDOM_NUMBER
     puts "Great guessing! #{RANDOM_NUMBER} was the correct answer."
     break
-  when (guess_difference / guess.to_f) <= 0.15
+  when (guess_difference / guess.to_f) <= 0.25
     puts "Getting hot, you're close!"
-  when (guess_difference / guess.to_f) <= 0.30
+  when (guess_difference / guess.to_f) <= 0.35
     puts "Warm, but that wasn't it."
-  when (guess_difference / guess.to_f) > 0.30
-    puts "Cold. Try again."
+  when (guess_difference / guess.to_f) >= 0.60
+    puts "Cold. Try again"
+  when (guess_difference / guess.to_f) >= 1.0
+    puts "Freezing cold. Try again"
   else
     puts "Sorry, that wasn't it."
   end
