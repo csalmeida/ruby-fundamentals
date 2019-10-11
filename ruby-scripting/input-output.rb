@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 # Output
 
 # These provide the same output.

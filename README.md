@@ -26,10 +26,11 @@ Introduction to core features of the [Ruby](https://www.ruby-lang.org) programmi
   - [Conditionals](#conditionals)
   - [Loops](#loops)
   - [Iterators](#iterators)
+  - [Challenge: Blank Patterns](challenges/blank-patterns.rb)
 - [Scripting](#scripting)
   - [Best Practices](#best-practices)
   - [Exit a running script](#exit-a-running-script)
-  - [Input and output](#input-and-output)
+  - [Challenge: Guessing Game](challenges/guessing-game.rb)
 
 # Getting Started
 
@@ -675,6 +676,8 @@ money_in_the_bank == nil # true
 
 All the above statements will return true if the variable `money_in_the_bank` is empty.
 
+> There's a challenge available for this chapter: [Roman Numerals](challenges/roman-numerals.rb)
+
 # Control Structures
 
 They add dynamism to the code being written and allow to determine the circumstances when code executes. For instance, using conditionals helps to define a code block to only run when a condition is met. Loops can run a code block a specific number of times or until a condition is met. Furthermore, there are iterators which uses a set of objects and it will loop moving through an `array` or a `hash`.
@@ -985,6 +988,8 @@ for fruits in fruit
 end
 ```
 
+> There's a challenge available for this chapter: [Blank Patterns](challenges/blank-patterns.rb)
+
 # Scripting
 
 Expanding on Ruby scripting best practices and how to take in user input.
@@ -1079,3 +1084,5 @@ Hello, Omboa!
 ```
 
 Using input and outputs can help when interacting with the user.
+
+> There's a challenge available for this chapter: [Guessing Game](challenges/guessing-game.rb)
