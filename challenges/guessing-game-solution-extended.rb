@@ -70,6 +70,7 @@ puts "You chose a limit of #{MAX_NUMBER} and can try to guess the number #{MAX_A
     break
   when guess_number == MAX_ATTEMPTS
     puts "That was your last guess, thanks for playing."
+    break
   when (guess_difference / guess.to_f) <= 0.25
     puts "Getting hot, you're close!"
   when (guess_difference / guess.to_f) <= 0.35
