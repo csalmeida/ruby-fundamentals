@@ -49,6 +49,14 @@ puts "You chose a limit of #{MAX_NUMBER} and can try to guess the number #{MAX_A
   print "Guess #{guess_number}: "
   guess = gets.chomp.to_i
 
+  # Only store input if user typed a number.
+  until guess.is_a?(Integer) && guess != 0
+    puts "Try a number (can't be 0): "
+    print "-> "
+    guess = gets.chomp.to_i
+    puts
+  end
+
   # Use to determine how close is guess from the answer.
   if guess > RANDOM_NUMBER
     guess_difference = guess - RANDOM_NUMBER.to_f 
