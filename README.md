@@ -34,6 +34,7 @@ Introduction to core features of the [Ruby](https://www.ruby-lang.org) programmi
 - [Enumerables and Code Blocks](#enumerables-and-code-blocks)
   - [Enumerables](#enumerables)
   - [What is a code block?](#what-is-a-code-block)
+  - [Find Methods](#find-methods)
 
 # Getting Started
 
@@ -1186,3 +1187,25 @@ puts number  # 1
 ```
 
 Code blocks allow a block of code to be defined and be applied to a method.
+
+## Find Methods
+
+Ruby's find methods can be applied to enumerables and code blocks when sifting through a set.
+
+A list of the most common methods applied to enumerables include:
+
+- `find` / `detect`
+- `find_all` / `select`
+- `any?` / `none?`
+- `all?` / `one?`
+- `delete_if`
+
+An example would be to find a value on an enumerable:
+
+```ruby
+# enumerables-and-code-blocks/find-methods.rb
+range = 1..10
+range.find {|number| number == 5 } # 5
+```
+
+Since the number 5 does exist in the range, the condition is met and the value is returned. [See find-methods.rb](enumerables-and-code-blocks/find-methods.rb) for more examples on how to use find methods.
