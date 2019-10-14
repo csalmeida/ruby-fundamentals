@@ -31,6 +31,9 @@ Introduction to core features of the [Ruby](https://www.ruby-lang.org) programmi
   - [Best Practices](#best-practices)
   - [Exit a running script](#exit-a-running-script)
   - [Challenge: Guessing Game](challenges/guessing-game.rb)
+- [Enumerables and Code Blocks](#enumerables-and-code-blocks)
+  - [Enumerables](#enumerables)
+  - [What is a code block?](#what-is-a-code-block)
 
 # Getting Started
 
@@ -1086,3 +1089,100 @@ Hello, Omboa!
 Using input and outputs can help when interacting with the user.
 
 > There's a challenge available for this chapter: [Guessing Game](challenges/guessing-game.rb)
+
+# Enumerables and Code Blocks
+
+This chapter will go more in depth on enumerables, powerful methods that can be used on them and how code blocks work.
+
+## Enumerables
+
+Enumerables are a set of items that can be counted. These include _arrays_, _ranges_ and _hashes_. Strings however, they're not considered an enumerable since it is difficult to determine what is being counted as some characters can be multi byte characters and there was some ambiguity in what should be counters (characters or bytes).
+
+Strings will still behave as enumerables if what is being counted is specified.
+
+Enumerables is a module within the Ruby language. A module is essentially a group of methods that can be included in other `class`es. The concept of modules and classes will be explored at a later chapter but it essentially means that, for instance, an `Array` can inherit methods from an `Enumerable` and make use of them. Refer to [the documentation in the included modules section](https://ruby-doc.org/core-2.6.4/Array.html) to find if methods from enumerables are available on an object.
+
+The methods will be explored throughout the chapter.
+
+## What is a code block?
+
+Code blocks were first introduced in this document when used with [iterators](#iterators) but it is worth expanding further.
+
+In the case of using iterators, the code block is defined by the words `do` and `end`, acting as delimiters for the block.
+
+```ruby
+5.times do
+  puts "Hello"
+end
+```
+
+The same code block can be defined in a single line if delimited by curly-braces:
+
+```ruby
+5.times { puts "Hello" }
+```
+
+The convention normally is to use the _curly-brace format_ on either single line blocks or blocks that return data but make no changes to it.
+
+The _do-end format_ is normally used when more than one line is required or when data is changed and returned.
+
+> "In short, use the curly-braces when it's simple, use do and end when it's anything more complex – [Kevin Skoglund](https://twitter.com/kskoglund)
+
+### Block Variables
+
+There are also block variables that assing an item to it, defined by the pipe sign (`|block_variable|`) and the variable can be used inside that code block.
+
+```ruby
+5.downto(1) do |i|
+  puts "Countdown: #{i}"
+end
+
+# Or in a single line:
+
+5.downto(1) { |i| puts "Countdown: #{i}" }
+```
+
+Block variables can be named to be more descriptive is required. There can also be cases depending on the method used where more than one block variable may be defined.
+
+For instance, when working with a `hash` the key and the value can be assigned a block variable:
+
+```ruby
+scores = [low: 2, high: 8, average: 6]
+
+scores.each do |key, value|
+  puts "#{key.capitalize}: #{v}"
+end
+```
+
+### Block Variable Scope
+
+A [block variable is referenced much like a local variable](#variable-scope-indicators), however, it won't be available to use outside the block:
+
+```ruby
+# Local variable, can be used inside or outside the block.
+factor = 2
+1..5.each do |number|
+  # A block variable can only be use inside its block.
+  puts n * factor
+end
+
+# This variable does not exist in the local scope.
+puts number  # undefined local variable or method
+```
+
+In the case that a `number` variable is defined within the local scope, that value will be used, not the block variable one:
+
+```ruby
+# Local variable, can be used inside or outside the block.
+number = 1
+factor = 2
+1..5.each do |number|
+  # A block variable can only be use inside its block.
+  puts n * factor
+end
+
+# Variable was declared in local scope and therefore can be accessed.
+puts number  # 1
+```
+
+Code blocks allow a block of code to be defined and be applied to a method.
