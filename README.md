@@ -35,6 +35,7 @@ Introduction to core features of the [Ruby](https://www.ruby-lang.org) programmi
   - [Enumerables](#enumerables)
   - [What is a code block?](#what-is-a-code-block)
   - [Find Methods](#find-methods)
+  - [Map Methods](#map-methods)
 
 # Getting Started
 
@@ -1209,3 +1210,55 @@ range.find {|number| number == 5 } # 5
 ```
 
 Since the number 5 does exist in the range, the condition is met and the value is returned. [See find-methods.rb](enumerables-and-code-blocks/find-methods.rb) for more examples on how to use find methods.
+
+## Map Methods
+
+In Ruby, `map` and `collect` can be used to apply changes to each item on an enumerable. Mapping does a few things:
+
+- Iterates through an enumerable.
+- Execute a code block on each item.
+- Add the result of the block to a new array.
+- Returns the same number of items.
+
+In the example below, `map` will iterate through a block and
+the code block will make a change to the item.
+
+```ruby
+# enumerables-and-code-blocks/map-methods.rb
+x = [1,2,3,4,5]
+y = x.map {|number| number + 1}
+```
+
+Whilst `x` had the numbers 1 to 5 in an array, `y` will return `[2,3,4,5,6]` instead. The same number of items but `1` was added to each of them during the map.
+
+Mapping will always return an array, even if a hash is used.
+
+```ruby
+# enumerables-and-code-blocks/map-methods.rb
+scores = {low: 2, high: 8, average: 6}
+adjusted_scores = scores.map do |key,value|
+  "#{key.capitalize}: #{value * 100}"
+end
+
+puts adjusted_scores
+```
+
+The block would result in `adjusted_scores` being returned as an array:
+
+```ruby
+['Low: 200', 'High: 800', 'Average: 600']
+```
+
+There are also version with `!` at the end, `map!` and `collect!`. This is the way for Ruby to indicate a more powerful or destructive version of a method. 
+
+In this case it works the exact same way but it replaces the contents of the existing array, modifying it instead of returning a new one.
+
+```ruby
+# enumerables-and-code-blocks/map-methods.rb
+fruits.map! do |fruit|
+  fruit.capitalize
+end
+puts fruits
+```
+
+Mapping is a tool that is commonly used in Ruby scripts.
