@@ -37,6 +37,7 @@ Introduction to core features of the [Ruby](https://www.ruby-lang.org) programmi
   - [Find Methods](#find-methods)
   - [Map Methods](#map-methods)
   - [Inject Methods](#inject-methods)
+  - [Sort Methods](#sort-methods)
 
 # Getting Started
 
@@ -1341,5 +1342,71 @@ An empty string can also be passed when manipulating values and storing them in 
 # enumerables-and-code-blocks/inject-methods.rb
 mash = fruits.inject('') do |memo, fruit|
   memo << fruit[0]
+end
+```
+
+## Sort Methods
+
+Enumerables can also be sorted. The `sort` method can be used with no arguments to return an array with default sorting:
+
+```ruby
+# enumerables-and-code-blocks/sort-methods.rb
+fruits = ['mango', 'pineapple', 'papaya', 'guava', 'apricot']
+default_sort = fruits.sort # [apricot, guava, mango, papaya, pineapple]
+```
+
+The default sorting for strings is alphabetical sorting in ascending order. This behaviour can be overriden by passing a code block with a comparison, using the comparison operator (`<=>`). This operator can be applied to two values (`value_1 <=> value_2`) and returns one of three values:
+
+| Return value | Meaning | Example | Sort move |
+| ------------- |:-------------:|:-------------:|:-------------:|
+| -1 | Less than | `1 <=> 2` | Moves "left" |
+| 0     | Equal | `2 <=> 2` | Stays |
+| 1 | Greater than | `2 <=> 1`| Moves "right" |
+
+Using the comparison operator in a code block allows sorting an enumerable in a custom way:
+
+```ruby
+# enumerables-and-code-blocks/sort-methods.rb
+length_sort = fruits.sort do |fruit_1, fruit_2|
+  fruit_1.length <=> fruit_2.length
+end # [mango, guava, papaya, apricot, pineapple]
+```
+
+Furthermore there is `sort_by` which allows sorting based ona single property. However, `sort` tends to be slightly faster:
+
+```ruby
+# enumerables-and-code-blocks/sort-methods.rb
+fruits.sort_by {|fruit| fruit.length} # [mango, guava, papaya, apricot, pineapple]
+```
+
+Both methods have a `!` version that can be used to sort enumerables in place, replacing its contents:
+
+```ruby
+# enumerables-and-code-blocks/sort-methods.rb
+fruits = ['mango', 'pineapple', 'papaya', 'guava', 'apricot']
+
+fruits.sort!
+puts fruits # [apricot, guava, mango, papaya, pineapple]
+
+fruits.sort_by! {|fruit| fruit.length}
+puts fruits # [guava, mango, papaya, apricot, pineapple]
+```
+
+Sorting hashes present a problem since it is an unordered set. Sort can be called on a `hash` but it will return an `array`, an ordered set.
+
+The way it works is by converting the hash into an array and then calling `sort` on it so the position of the values being compared needs to be specified:
+
+```ruby
+# enumerables-and-code-blocks/sort-methods.rb
+hash = {a:4, y:1, c:5, b:3}
+
+# Sorts by key
+hash.sort do |pair_1, pair_2|
+  pair_1[0] <=> pair_2[0]
+end
+
+# Sorts by value
+hash.sort do |pair_1, pair_2|
+  pair_1[1] <=> pair_2[1]
 end
 ```
