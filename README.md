@@ -36,6 +36,7 @@ Introduction to core features of the [Ruby](https://www.ruby-lang.org) programmi
   - [What is a code block?](#what-is-a-code-block)
   - [Find Methods](#find-methods)
   - [Map Methods](#map-methods)
+  - [Inject Methods](#inject-methods)
 
 # Getting Started
 
@@ -1262,3 +1263,83 @@ puts fruits
 ```
 
 Mapping is a tool that is commonly used in Ruby scripts.
+
+## Inject Methods
+
+Inject methods can be useful when reusing the current value of an item on the next iteration but it can be tricky to understand at first.
+
+The methods are defined as `inject` and its synonym, `reduce`. The key part of an inject method is it has an "accumulator" value that it uses as it iterates through an enumerable.
+
+The accumulator is defined as a block variable and the Ruby convention is to name it `memo`.
+
+```ruby
+# enumerables-and-code-blocks/inject-methods.rb
+(1..5).inject {|memo, number| memo + number}
+```
+
+In the first iteration, `memo` does not have a value and takes the first item of the enumerable instead.
+
+On subsequent iterations it does `memo + number`, which results on the sum of all the items in this case (15).
+
+Here's a breakdown of the operation:
+
+```ruby
+# memo = 1
+# memo = memo + 2
+# memo = memo + 3
+# memo = memo + 4
+# memo = memo + 5
+```
+
+Return values do matter when using inject methods. Considering the following statement:
+
+```ruby
+# enumerables-and-code-blocks/inject-methods.rb
+numbers = (1..5).inject do |memo, number|
+  memo + number
+  x = 0
+end
+```
+
+Since the return value of the block is `0`, that is what `memo` will be set to on each iteration.
+
+```ruby
+# enumerables-and-code-blocks/inject-methods.rb
+(1..5).inject do |memo, number|
+  memo + number
+  x = 0
+end
+```
+
+Inject can iterate through string items as well and a starting value can be provided which can be helpful when the item is not an integer:
+
+```ruby
+# enumerables-and-code-blocks/inject-methods.rb
+fruits = ['mango', 'pineapple', 'papaya', 'guava']
+
+size = fruits.inject(0) do |memo, fruit|
+  memo + fruit.length
+end
+```
+
+This code block will result in the length of all fruits being added together and returning an integer but `inject` is not restricted to returning numbers only:
+
+```ruby
+# enumerables-and-code-blocks/inject-methods.rb
+longest = fruits.inject do |memo, fruit|
+  if fruit.length > memo.length
+    fruit
+  else
+    memo
+  end
+end
+```
+
+An empty string can also be passed when manipulating values and storing them in `memo`:
+
+```ruby
+# enumerables-and-code-blocks/inject-methods.rb
+mash = fruits.inject('') do |memo, fruit|
+  memo << fruit[0]
+end
+```
