@@ -4,6 +4,8 @@ Introduction to core features of the [Ruby](https://www.ruby-lang.org) programmi
 **Official Documentation:** https://ruby-doc.org/
 
 ## Table of Contents
+<details>
+<summary>Click to expand contents</summary>
 
 - [Getting Started](#getting-started)
   - [The Interactive Ruby Shell](#the-interactive-ruby-shell)
@@ -38,6 +40,8 @@ Introduction to core features of the [Ruby](https://www.ruby-lang.org) programmi
   - [Map Methods](#map-methods)
   - [Inject Methods](#inject-methods)
   - [Sort Methods](#sort-methods)
+  - [Merge Methods](#merge-methods)
+</details>
 
 # Getting Started
 
@@ -1410,3 +1414,39 @@ hash.sort do |pair_1, pair_2|
   pair_1[1] <=> pair_2[1]
 end
 ```
+
+## Merge Methods
+
+Merge methods only apply to hashes and are able to merge two of them together. Takes the keys and values of one `hash` and from another to form a new `hash`. A block can be provided to it in order to provide rules when performing that merge.
+
+```ruby
+# enumerables-and-code-blocks/merge-methods.rb
+hash_1 = {:a => 2, :b => 4, :c => 6}
+hash_2 = {:a => 3, :b => 4, :d => 8}
+
+hash_1.merge(hash_2) # {:a => 3, :b => 4, :c => 6, :d => 8}
+```
+
+In the example above, two hashes were merged. There were no conflicts except with the value of `hash_1[:a]` and `hash_2[:a]` as those were different.
+
+The merge method chose to get the value of the hash being merged in by default but this can be overridden with a code block. Ruby will make use of the code block in the case of a key conflict.
+
+```ruby
+# enumerables-and-code-blocks/merge-methods.rb
+hash_1.merge(hash_2) {|key,old,new| old} # {:a => 2, :b => 4, :c => 6, :d => 8}
+```
+
+Blocks are not limited to returning those values, they can also be used to return a value based on a comparison or operation:
+
+```ruby
+# Further logic can be applied to determine which value should be returned.
+puts hash_1.merge(hash_2) {|key,old,new| old < new ? old : new } # {:a => 2, :b => 4, :c => 6, :d => 8}
+
+
+# Both values can be used and assigned to a key.
+puts hash_1.merge(hash_2) {|key,old,new| old * new } # {:a => 6, :b => 16, :c => 6, :d => 8}
+```
+
+Since `:b` also presents a `key` conflict even if they have the same values, the block logic also applies to it.
+
+The merge method also has a `merge!` version which replaces the contents of a hash.
