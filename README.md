@@ -4,6 +4,8 @@ Introduction to core features of the [Ruby](https://www.ruby-lang.org) programmi
 **Official Documentation:** https://ruby-doc.org/
 
 ## Table of Contents
+<details>
+<summary>Click to expand contents</summary>
 
 - [Getting Started](#getting-started)
   - [The Interactive Ruby Shell](#the-interactive-ruby-shell)
@@ -39,6 +41,7 @@ Introduction to core features of the [Ruby](https://www.ruby-lang.org) programmi
   - [Inject Methods](#inject-methods)
   - [Sort Methods](#sort-methods)
   - [Merge Methods](#merge-methods)
+</details>
 
 # Getting Started
 
