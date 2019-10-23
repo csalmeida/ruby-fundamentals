@@ -32,6 +32,7 @@ Introduction to core features of the [Ruby](https://www.ruby-lang.org) programmi
 - [Scripting](#scripting)
   - [Best Practices](#best-practices)
   - [Exit a running script](#exit-a-running-script)
+  - [Input and output](#input-and-output)
   - [Challenge: Guessing Game](challenges/guessing-game.rb)
 - [Enumerables and Code Blocks](#enumerables-and-code-blocks)
   - [Enumerables](#enumerables)
