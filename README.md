@@ -121,7 +121,7 @@ Using `ri` allows documentation to be accessed offline if needed.
 ## Challenges
 There are a few challenges that were completed to solidify knowledge for each chapter. Consult [`/challenges`](challenges/) to access them, both include a file with the challenge and another with a `solution.rb`.
 
-> Challenges were designed by [Kevin Skoglund](https://twitter.com/kskoglund) for the [Ruby Essential Training course](https://www.lynda.com/Ruby-tutorials/Challenge-Roman-numerals/769286/807388-4.html) (linda.com)
+> Challenges were designed by [Kevin Skoglund](https://twitter.com/kskoglund) for the [Ruby Essential Training: 1 The Basics](https://www.linkedin.com/learning/ruby-essential-training-1-the-basics/) (linkedin.com)
 
 # Object Types
 An introduction to the various object types (also referred as data types) available in Ruby and how they work.
