@@ -32,6 +32,7 @@ Introduction to core features of the [Ruby](https://www.ruby-lang.org) programmi
 - [Scripting](#scripting)
   - [Best Practices](#best-practices)
   - [Exit a running script](#exit-a-running-script)
+  - [Input and output](#input-and-output)
   - [Challenge: Guessing Game](challenges/guessing-game.rb)
 - [Enumerables and Code Blocks](#enumerables-and-code-blocks)
   - [Enumerables](#enumerables)
@@ -121,7 +122,7 @@ Using `ri` allows documentation to be accessed offline if needed.
 ## Challenges
 There are a few challenges that were completed to solidify knowledge for each chapter. Consult [`/challenges`](challenges/) to access them, both include a file with the challenge and another with a `solution.rb`.
 
-> Challenges were designed by [Kevin Skoglund](https://twitter.com/kskoglund) for the [Ruby Essential Training course](https://www.lynda.com/Ruby-tutorials/Challenge-Roman-numerals/769286/807388-4.html) (linda.com)
+> Challenges were designed by [Kevin Skoglund](https://twitter.com/kskoglund) for the [Ruby Essential Training: 1 The Basics](https://www.linkedin.com/learning/ruby-essential-training-1-the-basics/) (linkedin.com)
 
 # Object Types
 An introduction to the various object types (also referred as data types) available in Ruby and how they work.
@@ -1450,3 +1451,5 @@ puts hash_1.merge(hash_2) {|key,old,new| old * new } # {:a => 6, :b => 16, :c =>
 Since `:b` also presents a `key` conflict even if they have the same values, the block logic also applies to it.
 
 The merge method also has a `merge!` version which replaces the contents of a hash.
+
+> There's a challenge available for this chapter: [Ruby Blanks](challenges/ruby-blanks.rb)
