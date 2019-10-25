@@ -1,29 +1,22 @@
 #!usr/bin/env ruby
 
-game_title = 'Ruby Blanks Game'
+# Title of the game
+puts '-' * 19
+puts '| Ruby Blanks Game|'
+puts '-' * 19
 
-# Wraps the game title with dashes.
-game_title = "| #{game_title} |"
-game_title.length.times do
-  print '-'
-end
-
-puts "\n#{game_title}"
-
-game_title.length.times do
-  print '-'
-end
-puts
-
-# I went to ____ and found a ____, it looked like _____ so I _____.
-# Next thing you know, the _____ was _____ like everyone else. It was ______ and ______. 
-
+# Sets a value to look for blanks in sentences.
 blanks = ['noun', 'noun', 'adjective', 'verb']
-responses = []
-# blanks = ['noun', 'verb', 'adjective', 'adjective']
 
-for blank in blanks
+# Prompts user to fill in the blanks, one by one.
+answers = blanks.map do |blank|
   indefinite_article = blank.start_with?('a') ? 'an' : 'a'
-  print "Give me a #{blank}: "
-  responses << gets.chomp
+  print "Give me #{indefinite_article} #{blank}: "
+  response = gets.chomp
 end
+
+# Fills the blanks in the sentence with captured answers.
+text = "I went to visit a #{answers[0]} and found a #{answers[1]}, it looked #{answers[2]} so I started to #{answers[3]}."
+
+# Shows complete sentence to the user.
+puts text
