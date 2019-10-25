@@ -1451,3 +1451,5 @@ puts hash_1.merge(hash_2) {|key,old,new| old * new } # {:a => 6, :b => 16, :c =>
 Since `:b` also presents a `key` conflict even if they have the same values, the block logic also applies to it.
 
 The merge method also has a `merge!` version which replaces the contents of a hash.
+
+> There's a challenge available for this chapter: [Ruby Blanks](challenges/ruby-blanks.rb)
