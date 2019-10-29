@@ -42,6 +42,8 @@ Introduction to core features of the [Ruby](https://www.ruby-lang.org) programmi
   - [Inject Methods](#inject-methods)
   - [Sort Methods](#sort-methods)
   - [Merge Methods](#merge-methods)
+- [Custom Methods](#custom-methods)
+  - [Define and Call Methods](#define-and-call-methods)
 </details>
 
 # Getting Started
@@ -1453,3 +1455,53 @@ Since `:b` also presents a `key` conflict even if they have the same values, the
 The merge method also has a `merge!` version which replaces the contents of a hash.
 
 > There's a challenge available for this chapter: [Ruby Blanks](challenges/ruby-blanks.rb)
+
+# Custom Methods
+
+This chapter is focused on introducing concepts to create and work with Ruby's custom methods.
+
+## Define and Call Methods
+
+Methods were already mentioned in previous chapters and how they can be applied to other objects. For instance, the use of `reverse`, `each` and `sort`, methods that are predefined on Ruby objects.
+
+This section will go over how to define can call custom methods. Methods, called functions in other programming languages, are going to provide instructions to perform a specific task which have been packaged up as a unit, and can be called later in a script, multiple times.
+
+This allows the _"Do not Repeat Yourself"_ (DRY) paradigm to be applied as a methods is defined once and called as needed, instead of being rewritten multiple times.
+
+In Ruby methods have to be defined before they can be called and can be redefined without error. Usually, on other programming languages a method/function cannot be redeclared at any point, this is not the case with Ruby.
+
+Generally, methods will be named in lowercase, with words separated by underscores (`my_ruby_method`) and the _first_ character has always to be either lowercase or an underscore, where the latter is uncommon.
+
+Any other character can be a letter, digit or underscore, with the exception of the last character which can also be a `?`, `!` or `=`.
+
+Additionally, using the same names for variables and methods should be avoided as it can be confusing.
+
+### Method Definition
+
+A method can be defined with the keywords `def` and `end` as follows:
+
+```ruby
+def method_name
+  # code here...
+end
+```
+
+After being defined, a method can be called as follows:
+
+```ruby
+# Executes the method.
+method_name
+```
+
+A more complete method shows how arguments can be passed in:
+
+```ruby
+# custom-methods/define-and-call-methods.rb
+def greet(name)
+  puts "Hello, #{name}"
+end
+
+greet('Skoglund')
+```
+
+A method doesn't need to have arguments, but if it does, different data can be passed in each time it's called.
