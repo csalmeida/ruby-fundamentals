@@ -1473,3 +1473,35 @@ In Ruby methods have to be defined before they can be called and can be redefine
 Generally, methods will be named in lowercase, with words separated by underscores (`my_ruby_method`) and the _first_ character has always to be either lowercase or an underscore, where the latter is uncommon.
 
 Any other character can be a letter, digit or underscore, with the exception of the last character which can also be a `?`, `!` or `=`.
+
+Additionally, using the same names for variables and methods should be avoided as it can be confusing.
+
+### Method Definition
+
+A method can be defined with the keywords `def` and `end` as follows:
+
+```ruby
+def method_name
+  # code here...
+end
+```
+
+After being defined, a method can be called as follows:
+
+```ruby
+# Executes the method.
+method_name
+```
+
+A more complete method shows how arguments can be passed in:
+
+```ruby
+# custom-methods/define-and-call-methods.rb
+def greet(name)
+  puts "Hello, #{name}"
+end
+
+greet('Skoglund')
+```
+
+A method doesn't need to have arguments, but if it does, different data can be passed in each time it's called.
