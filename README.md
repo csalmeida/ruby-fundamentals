@@ -45,6 +45,7 @@ Introduction to core features of the [Ruby](https://www.ruby-lang.org) programmi
 - [Custom Methods](#custom-methods)
   - [Define and Call Methods](#define-and-call-methods)
   - [Variable Scope](#variable-scope)
+  - [Arguments](#arguments)
 </details>
 
 # Getting Started
@@ -1531,3 +1532,112 @@ puts value # Will print 10, not 5.
 ```
 
 The example above shows how two variables called `value` were defined and are different as they belong to different local scopes. `value = 10` is scoped to the wider structure of the document whilst `value = 5` is scoped to the `output_value` method.
+
+## Arguments
+
+Arguments, also referred to as `args`, allow a method to receive values at runtime (when it is called). Multiple arguments can be defined in a method, and these are separated by commas.
+
+The order and number of arguments passed in must match the method definition. In the example below, the `volume` method expects three arguments:
+
+```ruby
+# custom-methods/arguments.rb
+def volume(x, y, z)
+  x * y * z
+end
+
+volume(2,3,4) # 24
+```
+
+Arguments can be used to add dynamism to scripts, as methods can be called with different values each time:
+
+```ruby
+# custom-methods/arguments.rb
+volume(5,7,8) # 280
+volume(42,86,22) # 79464
+```
+
+The method requires all arguments to be passed in, otherwise it will throw an error:
+
+```ruby
+volume(42,86)
+# custom-methods/arguments.rb:4:in `volume': wrong number of arguments (given 2, expected 3) (ArgumentError)
+```
+
+It will also expect arguments to be passed in the correct order, otherwise unexpected behavior might occur:
+
+```ruby
+# custom-methods/arguments.rb
+def introduction(greeting, name)
+  puts "#{greeting}, #{name}."
+end
+
+introduction("Yoda","I am") # "Yoda, I am."
+introduction("I am","Groot") # "I am, Groot."
+```
+
+The convention in Ruby is that methods should only have parentheses if they take arguments, whether they're being defined or called:
+
+```ruby
+# Parentheses being used to wrap arguments:
+def introduction(greeting, name)
+  puts "#{greeting}, #{name}."
+end
+
+introduction("Yoda","I am")
+
+# The same being done with a method with no arguments.
+# Uncommon, but valid Ruby.
+def welcome()
+  puts "Hello!"
+end
+
+welcome()
+
+# A method with no arguments is usually defined and called with no parentheses.
+def goodbye
+  puts "Hello!"
+end
+
+goodbye
+
+# However, methods with arguments can also refrain from using parentheses.
+# This is discouraged and considered bad practice by some Rubyists, but some might define and call methods this way.
+def call name
+  puts "#{name}!"
+end
+
+call 'puppy'
+```
+
+### Argument Default Values
+
+Arguments can be made optional, in case it is not assigned a default value will be put in place instead. It can take any Ruby object as an optional value:
+
+```ruby
+def greet(greeting="Hello", name="World")
+  puts "#{greeting}, #{name}"
+end
+
+greet() # "Hello, World"
+```
+
+Required arguments should be listed first as those need to be passed in, whilst optional ones are listed last. 
+
+However, if a default value needs be skipped over, usually the optional arguments are passed in as a `hash` in order to provider further flexibility:
+
+```ruby
+# custom-methods/arguments.rb
+welcome_options = {
+  name: "Geralt",
+  punctuation: "..."
+}
+
+def welcome(greeting, options={})
+  name = options[:name] || 'friend'
+  punct = options[:punctuation] || '!'
+  greeting + ' ' + name + punct
+end
+
+puts welcome("It's you,", welcome_options); # It's you, Geralt...
+puts welcome("Hello"); # Hello friend!
+```
