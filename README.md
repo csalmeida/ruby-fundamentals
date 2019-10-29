@@ -44,6 +44,7 @@ Introduction to core features of the [Ruby](https://www.ruby-lang.org) programmi
   - [Merge Methods](#merge-methods)
 - [Custom Methods](#custom-methods)
   - [Define and Call Methods](#define-and-call-methods)
+  - [Variable Scope](#variable-scope)
 </details>
 
 # Getting Started
@@ -1505,3 +1506,28 @@ greet('Skoglund')
 ```
 
 A method doesn't need to have arguments, but if it does, different data can be passed in each time it's called.
+
+## Variable Scope
+
+This section expands on the concept of variable scope, as in where variables can be accessed from in a script depending on how they get defined.
+
+When a variable is defined without any [scope indicators](#variables), it defaults to a local variable. A variable defined inside a method is also considered a local variable, however, it cannot be accessed outside the method, the same way a local variable defined outside a method cannot be used inside one.
+
+> Local variables inside methods only have scope inside methods.
+
+Global, class and instance variables will have scope both outside and inside methods. This will be expanded later.
+
+```ruby
+# custom-methods/variable-scope.rb
+value = 10
+
+def output_value
+  value = 5
+  puts value
+end
+
+output_value # Will print 5, not 10.
+puts value # Will print 10, not 5.
+```
+
+The example above shows how two variables called `value` were defined and are different as they belong to different local scopes. `value = 10` is scoped to the wider structure of the document whilst `value = 5` is scoped to the `output_value` method.
