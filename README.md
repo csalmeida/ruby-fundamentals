@@ -46,6 +46,7 @@ Introduction to core features of the [Ruby](https://www.ruby-lang.org) programmi
   - [Define and Call Methods](#define-and-call-methods)
   - [Variable Scope](#variable-scope)
   - [Arguments](#arguments)
+  - [Return](#return)
 </details>
 
 # Getting Started
@@ -1641,3 +1642,40 @@ end
 puts welcome("It's you,", welcome_options); # It's you, Geralt...
 puts welcome("Hello"); # Hello friend!
 ```
+
+## Return
+
+Methods return values, and in Ruby the last operation's value in the code block is the one returned by default. For instance, in the example below, `y + z` is the value returned:
+
+```ruby
+def custom_method(x,y,z)
+  x + y
+  z + x
+  y + z
+end
+```
+
+The last operation's value is the one returned. This can lead to pitfalls in cases where conditionals take place:
+
+```ruby
+# custom-methods/return.rb
+def subtract(number_1, number_2)
+  result = number_1 - number_2
+  result = 0 if result < 5
+end
+
+puts subtract(8, 3) # nil
+```
+
+It is not required in Ruby for the `return` keyword to be used in the last line of the method. In some cases a return value might be required to be declared explicitly. This can be done with the `return` keyword and it can be useful in `if` statements and loops when returning early.
+
+```ruby
+# 
+def greet_again
+  return greeting = "Yo"
+end
+```
+
+Additionally `puts` and `print` should be avoided in most methods as it is more flexible. It can be assigned to a variable or interpolate it into a string.
+
+It is reccomended to have separate methods to make calculations and another for output.
