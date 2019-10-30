@@ -1667,15 +1667,41 @@ end
 puts subtract(8, 3) # nil
 ```
 
-It is not required in Ruby for the `return` keyword to be used in the last line of the method. In some cases a return value might be required to be declared explicitly. This can be done with the `return` keyword and it can be useful in `if` statements and loops when returning early.
+It is not required in Ruby for the `return` keyword to be used in the last line of the method. In some cases, a return value might be required to be declared explicitly. This can be done with the `return` keyword and it can be useful whe applying `if` statements and loops and there's the need to return early.
 
 ```ruby
-# 
-def greet_again
-  return greeting = "Yo"
+# custom-methods/return.rb
+def greet_again(cool = false)
+  if cool
+    return greeting = "Yo"
+  end
+  greeting = "Hello"
+end
+
+cool = true
+puts greet_again(cool)
+```
+
+Additionally, `puts` and `print` should be avoided in most methods as it makes them more flexible. The return value can be assigned to a variable or interpolated into a string.
+
+It is recommended to have separate methods to make calculations and another for output.
+
+### Return Multiple Values
+
+Methods are able to return only one object. If more than one value needs to be returned, they need to be stored in an object enumerable like a `hash` or an `array`.
+
+```ruby
+# custom-methods/return.rb
+def add_and_subtract(number_1, number_2)
+  add = number_1 + number_2
+  subtract = number_1 - number_2
+  [add, subtract]
 end
 ```
 
-Additionally `puts` and `print` should be avoided in most methods as it is more flexible. It can be assigned to a variable or interpolate it into a string.
+Furthermore the values can be assigned to variables using Ruby's multitple assignment feature. It takes array values and assign them to each variable:
 
-It is reccomended to have separate methods to make calculations and another for output.
+```ruby
+add_result, sub_result = add_and_subtract(15,2)
+puts "Addition result was #{add_result} whilst subtraction was #{sub_result}."
+```
