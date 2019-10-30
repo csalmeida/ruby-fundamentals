@@ -11,11 +11,15 @@ end
 puts greet
 
 # The return value can be explicitly declared as needed.
-def greet_again
-  return greeting = "Yo"
+def greet_again(cool = false)
+  if cool
+    return greeting = "Yo"
+  end
+  greeting = "Hello"
 end
 
-puts greet_again
+cool = true
+puts greet_again(cool)
 
 # The last statement has a conditional 
 # that when it is not met returns nil.
@@ -38,3 +42,13 @@ end
 
 puts add(8, 3)
 
+# Multiple values can be returned in an array or hash.
+def add_and_subtract(number_1, number_2)
+  add = number_1 + number_2
+  subtract = number_1 - number_2
+  [add, subtract]
+end
+
+# Multiple assignment can be used to take values out of an array and assign them to variables.
+add_result, sub_result = add_and_subtract(15,2)
+puts "Addition result was #{add_result} whilst subtraction was #{sub_result}."
