@@ -9,19 +9,23 @@ def show_game_title(title)
   puts dashes
 end
 
+# Checks if string has punctuation.
 def punctuation?(string)
   signs = [',', '.', ':', ';', '?', '!', '–']
   string.split(//).any? {|character| signs.include?(character) }
 end
 
+# Removes punctuation at the end of a string.
 def remove_punctuation(string)
   punctuation?(string) ? string.chop! : string
 end
 
+# Returns punctuation being used on a string is needed.
 def get_punctuation(string)
   punctuation?(string) ? string.chars.last : ''
 end
 
+# Converts a word into Pig latin.
 def pig_latin(word)
   vowels = ['a', 'e', 'i', 'o', 'u']
   suffix = 'ay'
@@ -46,6 +50,7 @@ def pig_latin(word)
   word = word + suffix
 end
 
+# Converts a whole sentence into Pig latin.
 def sentence_to_pig_latin(sentence)
   sentence = sentence.split(' ')
   sentence.map! do |word|
@@ -56,19 +61,29 @@ def sentence_to_pig_latin(sentence)
   sentence.join(' ')
 end
 
+# Capitalizes words after certain punctuation.
 def format_sentence(sentence)
- sentence = sentence.capitalize.split(//)
- sentence = sentence.map.with_index(0) do |character, index|
-  if character == '.' and index != sentence.length
-    sentence[index+2].capitalize
+  pattern = /([\.\?\!] [A-z])/
+  scan = sentence.scan(pattern).flatten
+  scan.each do |occurence|
+    replacement = occurence.upcase
+    sentence.sub!(occurence, replacement)
   end
-    character
- end
- sentence.join('')
+  sentence[0] = sentence[0].upcase
+  sentence
 end
 
+# Translates sentences into Pig Latin.
+# Run indefinetly until user types 'quit' or 'exit'
+def pig_latin_translator
+  input = nil
+  until input == 'quit' || input == 'exit'
+    print "Translate > "
+    input = gets.chomp
+    input.strip == '' ? redo : nil
+    puts format_sentence(sentence_to_pig_latin(input))
+  end
+end
 
 show_game_title('Pig Latin Translator')
-sentence = "Next thing you know, the dragon was having a laugh like everyone else. It was strange and loud."
-puts sentence
-puts format_sentence(sentence_to_pig_latin(sentence))
+pig_latin_translator
