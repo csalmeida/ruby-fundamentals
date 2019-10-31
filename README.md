@@ -47,6 +47,7 @@ Introduction to core features of the [Ruby](https://www.ruby-lang.org) programmi
   - [Variable Scope](#variable-scope)
   - [Arguments](#arguments)
   - [Return](#return)
+- [Further Resources](#further-resources)
 </details>
 
 # Getting Started
@@ -1705,3 +1706,10 @@ Furthermore the values can be assigned to variables using Ruby's multitple assig
 add_result, sub_result = add_and_subtract(15,2)
 puts "Addition result was #{add_result} whilst subtraction was #{sub_result}."
 ```
+
+> There's a challenge available for this chapter: [Pig Latin](challenges/pig-latin.rb)
+
+# Further Resources
+
+- [Ruby: Classes and Modules](https://www.linkedin.com/learning/ruby-classes-and-modules/define-a-class)
+- [Ruby on Rails](https://rubyonrails.org/)
