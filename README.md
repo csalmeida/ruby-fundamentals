@@ -1,4 +1,4 @@
-# Learning Ruby
+# Ruby Fundamentals
 
 Introduction to core features of the [Ruby](https://www.ruby-lang.org) programming language and initial experiments.
 **Official Documentation:** https://ruby-doc.org/
