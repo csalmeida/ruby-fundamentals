@@ -187,10 +187,11 @@ There are some variables with special meaning. These have characters to specify 
 
 |       |        |
 | ------------- |:-------------:|
-| **Global**     | $variables |
-| **Class**      | @@variables |
-| **Local** | variables |
-| **Block** | variables |
+| **Global**     | $variable |
+| **Class**      | @@variable |
+| **Instance**   | @variable |
+| **Local** | variable |
+| **Block** | variable |
 
 Most of the time local variables are used but other types will be expanded upon on later chapters. 
 
