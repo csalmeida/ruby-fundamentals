@@ -1714,3 +1714,4 @@ puts "Addition result was #{add_result} whilst subtraction was #{sub_result}."
 
 - [Ruby: Classes and Modules](https://www.linkedin.com/learning/ruby-classes-and-modules/define-a-class)
 - [Ruby on Rails](https://rubyonrails.org/)
+- [Ruby API Documentation](https://rubyapi.org/)
