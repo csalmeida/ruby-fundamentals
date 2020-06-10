@@ -187,10 +187,11 @@ There are some variables with special meaning. These have characters to specify 
 
 |    Type   |    Declaration    |
 | ------------- |:-------------:|
-| **Global**     | $variables |
-| **Class**      | @@variables |
-| **Local** | variables |
-| **Block** | variables |
+| **Global**     | $variable |
+| **Class**      | @@variable |
+| **Instance**   | @variable |
+| **Local** | variable |
+| **Block** | variable |
 
 Most of the time, local variables are used but other types will be expanded upon on later chapters. 
 
@@ -1717,3 +1718,4 @@ puts "Addition result was #{add_result} whilst subtraction was #{sub_result}."
 - [Ruby: Classes and Modules Repository (continuation of Ruby Fundamentals)](https://github.com/csalmeida/ruby-classes-and-modules)
 - [Ruby: Classes and Modules LinkedIn Course](https://www.linkedin.com/learning/ruby-classes-and-modules/define-a-class)
 - [Ruby on Rails](https://rubyonrails.org/)
+- [Ruby API Documentation](https://rubyapi.org/)
