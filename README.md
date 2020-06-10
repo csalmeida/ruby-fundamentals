@@ -141,7 +141,7 @@ In other languages that's not always the case, many other object-oriented langua
 
 However in Ruby, _almost_ everything is an object and these can be interacted in similar ways. They are called objects because they are rather analogous to objects in the real world.
 
-For instace a `book` is an object with certain properties, uses or behaviours. A book can have a blue cover, 250 pages, and a language it is published in.
+For instance a `book` is an object with certain properties, uses or behaviours. A book can have a blue cover, 250 pages, and a language it is published in.
 
 The `book` can be opened, read and closed.
 
@@ -185,14 +185,14 @@ puts x
 
 There are some variables with special meaning. These have characters to specify what they are:
 
-|       |        |
+|    Type   |    Declaration    |
 | ------------- |:-------------:|
 | **Global**     | $variables |
 | **Class**      | @@variables |
 | **Local** | variables |
 | **Block** | variables |
 
-Most of the time local variables are used but other types will be expanded upon on later chapters. 
+Most of the time, local variables are used but other types will be expanded upon on later chapters. 
 
 ## Numbers
 In Ruby, numbers are split into two categories of objects, `integers` for whole numbers and `floats` for decimals, when more precision is required.
@@ -221,7 +221,7 @@ puts "Modulus (4%2):"
 puts 4 % 2
 ```
 
-Numbers can be assigned to variables like any other object and math assigned operators can be used as well. This allows a number to be added, subtracted, divided or multiplied to the value a variable currently holds:
+Numbers can be assigned to variables like any other object and math assigned operators can be used as well. This allows a number to be added, subtracted, divided or multiplied to the value a variable currently points to:
 
 ``` ruby
 # object-types/numbers.rb
@@ -233,7 +233,7 @@ x = 4
 x += 2 # same as: x = x + 2
 
 # Subtracting 2 from 6.
-x -+ 2
+x -= 2
 
 # Dividing 4 by 2.
 x /= 2
@@ -271,7 +271,7 @@ Similarly, the same happens with `Float`s:
 2.6 + 2.6 # 5.2, Float 
 ```
 
-However, if a `Float` is present in an operation with and `Integer` the type will convert, as Ruby assumes precision is required:
+However, if a `Float` is present in an operation with an `Integer` the type will convert, as Ruby assumes precision is required:
 
 ``` ruby
 5 + 2.6 # 7.6, Float
@@ -282,7 +282,7 @@ This rule can lead to confusion in operations that use division. As two integers
 10 / 3 # 3, Integer
 ```
 
-To have the correct value return both at least one of them would require to be a `Float`:
+To evaluate this expression to a more precise value (closer to being correct), both at least one of them would require to be a `Float`:
 
 ``` ruby
 10.0 / 3 # 3.3333333333333335, Float
@@ -303,7 +303,7 @@ A string is represented by wrapping it in single or double quotes. There are dif
 
 ### Concatenation
 
-One common operation that is performed on `String`s is concatenation. It combines them into a single piece by adding them together.
+One common operation that is performed on `String`s is concatenation. It combines one or more `String`s into a single one by adding them together.
 
 In the example below the words _hello_ and _world_ are contatenated. Notice how the comma and the space is also concatenated in the middle to show it correctly, otherwise it would output _helloworld_ with no spacing:
 
@@ -328,16 +328,17 @@ Another way to join strings together is by using the `append` operator. It looks
 greeting = "Hello"
 greeting << ", "
 greeting << "nature"
+puts greeting # Hello, nature
 ```
 
 Strings also can be repeated by using the multiplication operator  (`*`):
 
 ``` ruby
 # object-types/strings.rb
-"ruby " * 4 # Ohhuuohhhuhhohhh
+"ruby " * 4 # ruby ruby ruby ruby (Ohhuuohhhuhhohhh)
 ```
 
-There are many methods that can be used with strings, consult `ri` to know which ones.
+There are many methods that can be used with strings, consult `ri` to find out which ones.
 
 ``` ruby
 # object-types/strings.rb
@@ -380,7 +381,9 @@ The `\` escape character can also be used as special control characters such as 
                          # Go!
 ```
 
-Additionally, interpolation can be used on strings. This means that something else can be inserted into the string, this could be a number, other objects or most commonly, a variable.
+Additionally, interpolation can be used on strings. This means that something else can be inserted into the string. This something else is an expression, a question that Ruby will try to answer.
+
+An expression could be a number, a mathematical operation, running a method on an object, other objects or most commonly, a variable.
 
 Same as the example above, interpolation only works on `"` strings:
 
@@ -403,7 +406,7 @@ puts "2 + 2 = #{2 + 2}" # 2 + 2 = 4
 
 Ruby also supports arrays, an ordered, integer-indexed collection of objects.
 
-Objects are put into an ordered list and can be referred to by the position that they hold.
+Objects are put into an ordered list and can be referred to by the position that they hold when using arrays.
 
 The position count starts at `0` (0 indexed), common on most programming languages. This means that the first item of an array is accessed by refering `0` as its index, not `1`.
 
@@ -424,7 +427,7 @@ an_array[3] # 2077
 an_array[4] # nil
 ```
 
-Values can also be assigned to array positions, _a_ will be replaced with _Bug_:
+Values can also be assigned to array positions, position `0` will no longer point at the value `'a'` and will point at `"Bug"` instead:
 
 ``` ruby
 # object-types/arrays.rb
@@ -543,7 +546,7 @@ One of the most misunderstood objects in Ruby as most languages don't have a sim
 
 Symbols are like strings but cannot be edited, they begin with a colon and are not delimited by quotes. 
 
-The name of the symbol follows the same conventions as variables variables, all lowercase and separated by semicolons. For instance, `:first_name`.
+The name of the symbol follows the same conventions as variables, all lowercase and separated by semicolons. For instance, `:first_name`.
 
 A symbol can be used to define keys in hashes. This can bring two benefits: First that symbols are not editable, therefore keys cannot be changed somehow (their values can) and secondly, using symbols allows Ruby to use memory more effectively:
 
@@ -573,7 +576,7 @@ another_person[:last_name]
 
 An object that is either `true` or `false`. Its mostly used for comparisons and logical expressions that define whether a piece of code runs.
 
-Booleans can either be defined with the keywords `true` or `false`. Using `1` or `0` as booleans does not work. For instance, both `0 == true` and `1 == true` will evaluate to false.
+Booleans can either be defined with the keywords `true` or `false`. The values `1` or `0` may not be used in boolean expressions as they won't evaluate to the expected value. For instance, **both** `0 == true` and `1 == true` will evaluate to `false`.
 
 ```ruby
 # object-types/booleans.rb
@@ -581,7 +584,7 @@ x = true
 y = false
 ```
 
-To define conditions, comparison and logic operators:
+To define conditions, comparison and logic operators are used:
 
 |       |        |
 | ------------- |:-------------:|
@@ -877,7 +880,7 @@ loop do
 end
 ```
 
-However, this code would repeat forever so a conditional or a way to limit the iterations if necessary to close the loop. There are a few _control methods_ that can be used to achieve this:
+However, this code would repeat forever so a conditional or a way to limit the iterations is necessary to close the loop. There are a few _control methods_ that can be used to achieve this:
 
 |       |        |
 | ------------- |:-------------:|
@@ -886,7 +889,7 @@ However, this code would repeat forever so a conditional or a way to limit the i
 | `redo` | Redo an iteration |
 | `retry` | Start the whole loop over |
 
-The simplest loop in Ruby would look similar to this.
+A loop in Ruby can look similar to the following example:
 
 > An `index` and a condition is used to keep track of how many iterations are left to do.
 
@@ -901,7 +904,7 @@ end
 puts "Blast off!"
 ```
 
-However, defining loops this way in Ruby is not so common as there are simpler was of achieving the same results:
+However, defining loops this way in Ruby is not so common as there are streamlined ways of achieving the same results:
 
 ```ruby
 while boolean
@@ -944,7 +947,7 @@ To iterate means to say or do again. In the case of programming it means to appl
 
 An `iterator` is going to perform code on each item in a set. Most of the time could be an `array` or a `hash` but it could also be a `range`.
 
-The simplest iterator is the `times` iterator:
+An introductory iterator is the `times` iterator:
 
 ```ruby
 # control-structures/iterators.rb
@@ -965,9 +968,9 @@ There are other types of iterators, in the examples below these are wrapped in c
 | **downto** | `5.downto(1) { puts "Hello" }` |
 | **each** | `(1..5).each { puts "Hello" }` |
 
-However, running iterators on a single line does not allow the previous example to be create since it makes use of the current iteration number (`index`) to count down.
+However, running iterators on a single line does not allow the initial loop example to be created using them since it makes use of the current iteration number (`index`) to count down.
 
-To access it a block variable needs to be passed in, allowing to make use of the value as it iterates through:
+To access `index`, a block variable needs to be passed in, allowing to make use of the value as it iterates through:
 
 ```ruby
 # control-structures/iterators.rb
@@ -1061,11 +1064,11 @@ Exploring how to input and output values in Ruby.
 
 A command used throughout this document is `puts`, which allows something to be printed in the console.
 
-There's a variation of `puts` which is simply `print`, with the difference being that `puts` _always_ adds a line return at the end whilst `print` does not unless specified.
+There's a variation of `puts` which is `print`, with the difference being that `puts` _always_ adds a line return at the end whilst `print` does not unless specified.
 
 ### Input
 
-There's also the ability to do input using `gets`.
+There's also the ability to receive user input using `gets`.
 It will take everything typed until a user hits return.
 
 ```ruby
@@ -1085,7 +1088,7 @@ Hello, Omboa
 !
 ```
 
-To address this two methods can be used alongside `gets`, namely, `chop` and `chomp`. `chop` removes the last character of a string whilst `chomp` removes the last character only if it's a new line character.
+To address this case, two methods can be used alongside `gets`, namely, `chop` and `chomp`. `chop` removes the last character of a string whilst `chomp` removes the last character only if it's a new line character.
 
 ```ruby
 # ruby-scripting/input-output.rb
@@ -1111,13 +1114,13 @@ This chapter will go more in depth on enumerables, powerful methods that can be 
 
 ## Enumerables
 
-Enumerables are a set of items that can be counted. These include _arrays_, _ranges_ and _hashes_. Strings however, they're not considered an enumerable since it is difficult to determine what is being counted as some characters can be multi byte characters and there was some ambiguity in what should be counters (characters or bytes).
+Enumerables are a set of items that can be counted. These include _arrays_, _ranges_ and _hashes_. Strings however, they're not considered an enumerable since it is difficult to determine what is being counted as some characters can be multi byte characters and there was some ambiguity on what should be counted (characters or bytes).
 
 Strings will still behave as enumerables if what is being counted is specified.
 
-Enumerables is a module within the Ruby language. A module is essentially a group of methods that can be included in other `class`es. The concept of modules and classes will be explored at a later chapter but it essentially means that, for instance, an `Array` can inherit methods from an `Enumerable` and make use of them. Refer to [the documentation in the included modules section](https://ruby-doc.org/core-2.6.4/Array.html) to find if methods from enumerables are available on an object.
+Enumerables is a module within the Ruby language. A module is essentially a group of methods that can be included in other `class`es. The concept of modules and classes will be [explored at a later chapter](https://github.com/csalmeida/ruby-classes-and-modules) but it essentially means that, for instance, an `Array` can inherit methods from an `Enumerable` and make use of them. Refer to [the documentation in the included modules section](https://ruby-doc.org/core-2.6.4/Array.html) to find if methods from enumerables are available on an object.
 
-The methods will be explored throughout the chapter.
+The methods from `Enumerable` will be explored throughout this chapter.
 
 ## What is a code block?
 
@@ -1159,7 +1162,7 @@ end
 
 Block variables can be named to be more descriptive is required. There can also be cases depending on the method used where more than one block variable may be defined.
 
-For instance, when working with a `hash` the key and the value can be assigned a block variable:
+For instance, when working with a `hash` the key and the value of an item can be accessed with a block variable:
 
 ```ruby
 scores = [low: 2, high: 8, average: 6]
@@ -1234,7 +1237,7 @@ In Ruby, `map` and `collect` can be used to apply changes to each item on an enu
 - Returns the same number of items.
 
 In the example below, `map` will iterate through a block and
-the code block will make a change to the item.
+the code block will make a change to each item:
 
 ```ruby
 # enumerables-and-code-blocks/map-methods.rb
@@ -1242,7 +1245,7 @@ x = [1,2,3,4,5]
 y = x.map {|number| number + 1}
 ```
 
-Whilst `x` had the numbers 1 to 5 in an array, `y` will return `[2,3,4,5,6]` instead. The same number of items but `1` was added to each of them during the map.
+Whilst `x` had the numbers 1 to 5 in an array, `y` will return `[2,3,4,5,6]` instead. The same number of items as `x` but `1` was added to each of the values during the map.
 
 Mapping will always return an array, even if a hash is used.
 
@@ -1262,7 +1265,7 @@ The block would result in `adjusted_scores` being returned as an array:
 ['Low: 200', 'High: 800', 'Average: 600']
 ```
 
-There are also version with `!` at the end, `map!` and `collect!`. This is the way for Ruby to indicate a more powerful or destructive version of a method. 
+There are also versions with `!` at the end, `map!` and `collect!`. This is the way for Ruby to indicate a more powerful or destructive version of a method. 
 
 In this case it works the exact same way but it replaces the contents of the existing array, modifying it instead of returning a new one.
 
@@ -1296,11 +1299,11 @@ On subsequent iterations it does `memo + number`, which results on the sum of al
 Here's a breakdown of the operation:
 
 ```ruby
-# memo = 1
-# memo = memo + 2
-# memo = memo + 3
-# memo = memo + 4
-# memo = memo + 5
+memo = 1 # 1
+memo = memo + 2 # 3
+memo = memo + 3 # 6
+memo = memo + 4 # 10
+memo = memo + 5 # 15
 ```
 
 Return values do matter when using inject methods. Considering the following statement:
@@ -1383,7 +1386,7 @@ length_sort = fruits.sort do |fruit_1, fruit_2|
 end # [mango, guava, papaya, apricot, pineapple]
 ```
 
-Furthermore there is `sort_by` which allows sorting based ona single property. However, `sort` tends to be slightly faster:
+Furthermore there is `sort_by` which allows sorting based on a single property. However, `sort` tends to be slightly faster:
 
 ```ruby
 # enumerables-and-code-blocks/sort-methods.rb
@@ -1405,7 +1408,7 @@ puts fruits # [guava, mango, papaya, apricot, pineapple]
 
 Sorting hashes present a problem since it is an unordered set. Sort can be called on a `hash` but it will return an `array`, an ordered set.
 
-The way it works is by converting the hash into an array and then calling `sort` on it so the position of the values being compared needs to be specified:
+The way it works is by converting the hash into an array and then calling `sort` on it. The position of the values being compared needs to be specified (key or value):
 
 ```ruby
 # enumerables-and-code-blocks/sort-methods.rb
@@ -1424,7 +1427,7 @@ end
 
 ## Merge Methods
 
-Merge methods only apply to hashes and are able to merge two of them together. Takes the keys and values of one `hash` and from another to form a new `hash`. A block can be provided to it in order to provide rules when performing that merge.
+Merge methods only apply to hashes and are able to merge two of them together. Takes the keys and values of one `hash` and another to form a new `hash`. A block can be provided in order to define rules to be used when performing the merge.
 
 ```ruby
 # enumerables-and-code-blocks/merge-methods.rb
@@ -1470,11 +1473,11 @@ Methods were already mentioned in previous chapters and how they can be applied 
 
 This section will go over how to define can call custom methods. Methods, called functions in other programming languages, are going to provide instructions to perform a specific task which have been packaged up as a unit, and can be called later in a script, multiple times.
 
-This allows the _"Do not Repeat Yourself"_ (DRY) paradigm to be applied as a methods is defined once and called as needed, instead of being rewritten multiple times.
+This allows the _"Do not Repeat Yourself"_ (DRY) paradigm to be applied as a method is defined once and called as needed, instead of being rewritten multiple times.
 
-In Ruby methods have to be defined before they can be called and can be redefined without error. Usually, on other programming languages a method/function cannot be redeclared at any point, this is not the case with Ruby.
+In Ruby, methods have to be defined before they can be called and can be redefined without error. Usually, on other programming languages a method/function cannot be redeclared at any point, this is not the case with Ruby.
 
-Generally, methods will be named in lowercase, with words separated by underscores (`my_ruby_method`) and the _first_ character has always to be either lowercase or an underscore, where the latter is uncommon.
+Generally, methods will be named in lowercase, with words separated by underscores (`my_ruby_method`) and the _first_ character has always to be either lowercase or an underscore, the latter is uncommon.
 
 Any other character can be a letter, digit or underscore, with the exception of the last character which can also be a `?`, `!` or `=`.
 
@@ -1505,7 +1508,7 @@ def greet(name)
   puts "Hello, #{name}"
 end
 
-greet('Skoglund')
+greet('Skoglund') # Hello, Skoglund
 ```
 
 A method doesn't need to have arguments, but if it does, different data can be passed in each time it's called.
@@ -1518,7 +1521,7 @@ When a variable is defined without any [scope indicators](#variables), it defaul
 
 > Local variables inside methods only have scope inside methods.
 
-Global, class and instance variables will have scope both outside and inside methods. This will be expanded later.
+Global, class and instance variables will have scope both outside and inside methods. This will be [expanded on at a later chapter](https://github.com/csalmeida/ruby-classes-and-modules).
 
 ```ruby
 # custom-methods/variable-scope.rb
@@ -1613,7 +1616,7 @@ call 'puppy'
 
 ### Argument Default Values
 
-Arguments can be made optional, in case it is not assigned a default value will be put in place instead. It can take any Ruby object as an optional value:
+Arguments can be made optional, in case they're not present a default value will be put in place instead. It can take any Ruby object as an optional argument:
 
 ```ruby
 def greet(greeting="Hello", name="World")
@@ -1700,7 +1703,7 @@ def add_and_subtract(number_1, number_2)
 end
 ```
 
-Furthermore the values can be assigned to variables using Ruby's multitple assignment feature. It takes array values and assign them to each variable:
+Furthermore, the values can be assigned to variables using Ruby's multitple assignment feature. It takes array values and assign them to each variable:
 
 ```ruby
 add_result, sub_result = add_and_subtract(15,2)
@@ -1711,5 +1714,6 @@ puts "Addition result was #{add_result} whilst subtraction was #{sub_result}."
 
 # Further Resources
 
-- [Ruby: Classes and Modules](https://www.linkedin.com/learning/ruby-classes-and-modules/define-a-class)
+- [Ruby: Classes and Modules Repository (continuation of Ruby Fundamentals)](https://github.com/csalmeida/ruby-classes-and-modules)
+- [Ruby: Classes and Modules LinkedIn Course](https://www.linkedin.com/learning/ruby-classes-and-modules/define-a-class)
 - [Ruby on Rails](https://rubyonrails.org/)
