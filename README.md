@@ -183,7 +183,7 @@ puts x
 
 #### Variable Scope Indicators
 
-There are some variables with special meaning. These have characters to specify what they are:
+There are some variables with special meaning. These have characters prexifes to specify what they are:
 
 |    Type   |    Declaration    |
 | ------------- |:-------------:|
@@ -309,7 +309,7 @@ One common operation that is performed on `String`s is concatenation. It combine
 In the example below the words _hello_ and _world_ are contatenated. Notice how the comma and the space is also concatenated in the middle to show it correctly, otherwise it would output _helloworld_ with no spacing:
 
 ``` ruby
-"Hello" + ", " + "world" # hello, world
+"Hello" + ", " + "world" # Hello, world
 ```
 
 Strings can also be assigned to variables like any other object:
@@ -319,7 +319,7 @@ Strings can also be assigned to variables like any other object:
 greeting = "Hello"
 target = "world"
 sentence = greeting + ", " + target
-puts sentence # hello, world
+puts sentence # Hello, world
 ```
 
 Another way to join strings together is by using the `append` operator. It looks like the _less than, less than_ sign and suggests that one string is being shoved into the other:
@@ -353,7 +353,7 @@ Besides the aspects mentioned above there are some details worth being aware of 
 
 In the example below, there is a first string delimited by double quotes with _Let's escape_ inside. There is a single quote in this string (in the word _let's_) and it is valid Ruby.
 
-The second string iswrapped with single quotes but it introduces a problem. As Ruby established single quotes to be the delimiter of this string, it will mark its end when it finds its pair. So the string ends up being _Let_ instead of the intended _Let's escape_.
+The second string is wrapped with single quotes but it introduces a problem. As Ruby established single quotes to be the delimiter of this string, it will mark its end when it finds its pair. So the string ends up being _Let_ instead of the intended _Let's escape_.
 
 ``` ruby
 "Let's escape!"
@@ -486,7 +486,7 @@ mixed_array.compact! # [2, 4, ["a", "b"], "c"]
 mixed_array.flatten! # [2, 4, "a", "b", "c"]
 ```
 
-The '?' is another Ruby idiom that can be also used in methods to query or find out about and in most cases it return a [`boolean`](#booleans) value:
+The '?' is another Ruby idiom that can be also used in methods to query or find out about and in most cases it returns a [`boolean`](#booleans) value:
 
 ``` ruby
 # object-types/arrays.rb
@@ -547,7 +547,7 @@ One of the most misunderstood objects in Ruby as most languages don't have a sim
 
 Symbols are like strings but cannot be edited, they begin with a colon and are not delimited by quotes. 
 
-The name of the symbol follows the same conventions as variables, all lowercase and separated by semicolons. For instance, `:first_name`.
+The name of the symbol follows the same conventions as variables, all lowercase and separated by underscores. For instance, `:first_name`.
 
 A symbol can be used to define keys in hashes. This can bring two benefits: First that symbols are not editable, therefore keys cannot be changed somehow (their values can) and secondly, using symbols allows Ruby to use memory more effectively:
 
@@ -575,7 +575,7 @@ another_person[:last_name]
 
 ## Booleans
 
-An object that is either `true` or `false`. Its mostly used for comparisons and logical expressions that define whether a piece of code runs.
+An object that is either `true` or `false`. Its mostly used for comparisons and logical expressions that define whether a piece of code should run.
 
 Booleans can either be defined with the keywords `true` or `false`. The values `1` or `0` may not be used in boolean expressions as they won't evaluate to the expected value. For instance, **both** `0 == true` and `1 == true` will evaluate to `false`.
 
@@ -663,7 +663,7 @@ letters = [*alphabet] # [a, z]
 
 ## Constants
 
-Constants are akin to variables with the difference being that once defined, it is not expected for that value to ever change on runtime.
+Constants are akin to variables with the difference being that once defined, it is not expected for that value to ever change during runtime.
 
 Constants are defined using all uppercase letters.
 
@@ -716,7 +716,7 @@ if boolean
 end
 ```
 
-The code between the `if` condition and the `end` keyword forms block that will only execute if that condition is met.
+The code between the `if` condition and the `end` keyword forms a block that will only execute if that condition is met.
 
 ```ruby
 # control-structures/conditionals.rb
@@ -736,7 +736,7 @@ else
 end
 ```
 
-Conditionals can also accommodate more than one comparison. If the previous one is not met, it will keep working the block down until one `elsif` is met or when the `else` block is hit.
+Conditionals can also accommodate more than one comparison. If the previous one is not met, it will keep working down the block until one `elsif` is met or when the `else` block is hit.
 
 ```ruby
 # control-structures/conditionals.rb
@@ -760,7 +760,7 @@ end
 ```
 
 ### Case
-The if/else statement structure makes sense when a couple of conditionals is being checked. However, once there are a number of them a `case` statement should be considered.
+The if/else statement structure makes sense when a couple of conditionals are being checked. However, once there are a number of them a `case` statement can be considered.
 
 ```ruby
 case
@@ -829,21 +829,23 @@ else
 end
 ```
 
-There is also the _or operator_, defined but the pipe sign `||` and it is useful when setting default values or evaluating based on two or more conditions concurrently:
+There is also the _or operator_, defined by the pipe sign `||` and it is useful when setting default values or evaluating based on two or more conditions concurrently:
 
 ```ruby
 # control-structures/conditionals.rb
 favorite_fruit = fruit || 'apple' # pineapple
 ```
 
-The example above is saying "if `fruit` doesn't have a value or evaluates to `false` assign `'apple'` as the favorite fruit.
+The example above reads "if `fruit` doesn't have a value or evaluates to `false` assign `'apple'` as the favorite fruit.
+
+The _OR_ operator can also be used in conditional blocks in case one of the requirements applies it will execute it:
 
 ```ruby
 # control-structures/conditionals.rb
 if fruit == 'mango' || fruit == 'pineapple'
   puts "A #{fruit.upcase}! They're so tasty!"
 else
-  puts "Oh! I guess there are no Mangoes left."
+  puts "Oh! I guess there are no Mangoes or Pineapples left."
 end
 ```
 
@@ -864,7 +866,7 @@ unless favorite_fruit
 end
 ```
 
-Lastly, conditionals can be used as _statement modifiers_. These are usually used sparingly as a complete `if` statement tends to be more readable and are declared in a single line.
+Lastly, conditionals can be used as _statement modifiers_. These are usually used sparingly as a complete `if` statement tends to be more readable. Statement modifiers are declared in a single line.
 
 ```ruby
 # control-structures/conditionals.rb
@@ -873,7 +875,7 @@ puts favorite_fruit if fruit == favourite_fruit
 
 ## Loops
 
-Used to repeat a block of code over again, the simplest loop in Ruby is comprised of the `loop`, `do` and `end` keyword.
+Used to repeat run a block of code multiple times, the simplest loop in Ruby is comprised of the `loop`, `do` and `end` keyword.
 
 ```ruby
 loop do
@@ -917,7 +919,7 @@ until boolean
 end
 ```
 
-A more common way of defining loops is using `while` or `until`. The former iterates while a condition is met, whilst the latter will iterate until one is met.
+A more common way of defining loops is using `while` or `until`. The former iterates while a condition is met, whilst the latter will iterate until a condition is met.
 
 The `break` and `do` keywords are implicit and can be ommited:
 
@@ -1010,7 +1012,7 @@ for fruits in fruit
 end
 ```
 
-> There's a challenge available for this chapter: [Blank Patterns](challenges/blank-patterns.rb)
+> There's a challenge available for this chapter: [Blanket Patterns](challenges/blanket-patterns.rb)
 
 # Scripting
 
