@@ -18,5 +18,5 @@
 
 # Use loops and or iterators to come up with a solutions.
 # Working with the patterns the characters could be accessed like an array,
-# using string[0] to get the first character and then the rest os the string using a range string[1..-1]
+# using string[0] to get the first character and then the rest of the string using a range string[1..-1]
 # Or converting the string into an array, using split. Shift to pull items out of the array and join to reassemble it back into a string for output.
