@@ -1,0 +1,14 @@
+services:
+  ruby:
+  #   image: ruby:3.0.3-alpine3.15@sha256:6b3cc3ac047979b58efe2da3bf4a732d4fe4b06d28e48b63753a2752c66a0ef4
+    build:
+      # Setting a context and dockerfile paths allows for Dockerfiles to be stored away in a sub-directory.
+      context: ./ # Context of build, this is where the project files are stored.
+      dockerfile: ./docker/ruby.dockerfile # The path to Dockerfile and name of the dockerfile to be built
+    image: csalmeida/ruby-fundamentals:latest
+    # Docker compose does not allocate a tty so irb would just exit
+    command: sh -c 'while true; do sleep 30; done'
+    # container_name: ruby-fundamentals
+    volumes:
+      # Allows changes made to project directory to be accessed by the container via a bind mount.
+      - ./:/usr/src/ruby-fundamentals
