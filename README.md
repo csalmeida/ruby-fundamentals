@@ -1117,7 +1117,7 @@ This chapter will go more in depth on enumerables, powerful methods that can be 
 
 ## Enumerables
 
-Enumerables are a set of items that can be counted. These include _arrays_, _ranges_ and _hashes_. Strings however, they're not considered an enumerable since it is difficult to determine what is being counted as some characters can be multi byte characters and there was some ambiguity on what should be counted (characters or bytes).
+Enumerables are a set of items that can be counted. These include _arrays_, _ranges_ and _hashes_. Strings however, they're not considered an enumerable since it is difficult to determine what is being counted as some characters can be multi byte characters and there was some ambiguity on what should be counted by default (characters or bytes).
 
 Strings will still behave as enumerables if what is being counted is specified.
 
@@ -1151,7 +1151,7 @@ The _do-end format_ is normally used when more than one line is required or when
 
 ### Block Variables
 
-There are also block variables that assing an item to it, defined by the pipe sign (`|block_variable|`) and the variable can be used inside that code block.
+There are also block variables that assign an item to it, defined by the pipe sign (`|block_variable|`) and the variable can be used inside that code block.
 
 ```ruby
 5.downto(1) do |i|
@@ -1163,7 +1163,7 @@ end
 5.downto(1) { |i| puts "Countdown: #{i}" }
 ```
 
-Block variables can be named to be more descriptive is required. There can also be cases depending on the method used where more than one block variable may be defined.
+Block variables can be named to be more descriptive if required. There can also be cases depending on the method used where more than one block variable may be defined.
 
 For instance, when working with a `hash` the key and the value of an item can be accessed with a block variable:
 
@@ -1182,9 +1182,9 @@ A [block variable is referenced much like a local variable](#variable-scope-indi
 ```ruby
 # Local variable, can be used inside or outside the block.
 factor = 2
-1..5.each do |number|
+5.times do |number|
   # A block variable can only be use inside its block.
-  puts n * factor
+  puts number * factor
 end
 
 # This variable does not exist in the local scope.
@@ -1197,9 +1197,9 @@ In the case that a `number` variable is defined within the local scope, that val
 # Local variable, can be used inside or outside the block.
 number = 1
 factor = 2
-1..5.each do |number|
+5.times do |number|
   # A block variable can only be use inside its block.
-  puts n * factor
+  puts number * factor
 end
 
 # Variable was declared in local scope and therefore can be accessed.
@@ -1228,7 +1228,7 @@ range = 1..10
 range.find {|number| number == 5 } # 5
 ```
 
-Since the number 5 does exist in the range, the condition is met and the value is returned. [See find-methods.rb](enumerables-and-code-blocks/find-methods.rb) for more examples on how to use find methods.
+Since number 5 does exist in the range, the condition is met and the value is returned. [See find-methods.rb](enumerables-and-code-blocks/find-methods.rb) for more examples on how to use find methods.
 
 ## Map Methods
 
@@ -1286,7 +1286,7 @@ Mapping is a tool that is commonly used in Ruby scripts.
 
 Inject methods can be useful when reusing the current value of an item on the next iteration but it can be tricky to understand at first.
 
-The methods are defined as `inject` and its synonym, `reduce`. The key part of an inject method is it has an "accumulator" value that it uses as it iterates through an enumerable.
+The methods are defined as `inject` and its synonym, `reduce`. The key part of an inject method is having an "accumulator" value that it uses as it iterates through an enumerable.
 
 The accumulator is defined as a block variable and the Ruby convention is to name it `memo`.
 
@@ -1297,7 +1297,7 @@ The accumulator is defined as a block variable and the Ruby convention is to nam
 
 In the first iteration, `memo` does not have a value and takes the first item of the enumerable instead.
 
-On subsequent iterations it does `memo + number`, which results on the sum of all the items in this case (15).
+On subsequent iterations it does `memo + number`, which eventually results on the sum of all the items in this case (15).
 
 Here's a breakdown of the operation:
 
@@ -1674,7 +1674,7 @@ end
 puts subtract(8, 3) # nil
 ```
 
-It is not required in Ruby for the `return` keyword to be used in the last line of the method. In some cases, a return value might be required to be declared explicitly. This can be done with the `return` keyword and it can be useful whe applying `if` statements and loops and there's the need to return early.
+It is not required in Ruby for the `return` keyword to be used in the last line of the method. In some cases, a return value might be required to be declared explicitly. This can be done with the `return` keyword and it can be useful when applying `if` statements and loops and there's the need to return early.
 
 ```ruby
 # custom-methods/return.rb
